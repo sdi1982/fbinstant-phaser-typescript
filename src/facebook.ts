@@ -14,12 +14,14 @@ export default class FacebookInstant {
     public static get available(): boolean {
         return window.location.host == "www.facebook.com";
     }
-
+    // Will not resolve or reject if called when not available
+    // Needed fix: resolve or reject regardless of availability
     public static InitializeAndStartAsync = (): Promise<void> => {
         return new Promise((resolve, reject) => {
             if (!FacebookInstant._hasStarted) {
                 FBInstant.initializeAsync()
                     .then(() => {
+                        // Feature request: tie the progress to the loading time as it relates to the caller instead of immediately completing
                         FBInstant.setLoadingProgress(100);
                         FBInstant.startGameAsync()
                             .then(() => {
@@ -41,7 +43,8 @@ export default class FacebookInstant {
         });
 
     }
-
+    
+    // Feature request: keep track of loaded interstitial's
     public static LoadAndShowInterstitial = (): Promise<void> => {
         return new Promise((resolve, reject) => {
             if (FacebookInstant._hasStarted) {
