@@ -17,19 +17,19 @@ Facebook Instant Games functionality is only testable once your game is being ho
 ### Clone
 You can clone or download this and push any changes you might have
 
-### Install packages
+### Install Packages
 ```
 npm install
 ```
 Install all the packages specified in package.json
 
-### Run development server with webpack
+### Run Development Server with Webpack
 ```
 npm run dev
 ```
 Visit localhost:8080
 
-### Build for production
+### Build for Production
 ```
 npm run build
 ```
@@ -37,7 +37,7 @@ Output is bundle.js in dist folder
 
 The dist folder can be compressed and uploaded to Facebook Instant Games Hosting and tested
 
-## Built With
+## Built with
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server) - Development server
 * [TypeSript](https://github.com/Microsoft/TypeScript) - Scalable JavaScript
 * [Phaser 3 and Typings](https://github.com/photonstorm/phaser) - Game engine
