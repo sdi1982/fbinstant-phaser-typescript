@@ -9,7 +9,7 @@ const startGame = () => {
     }
 }
 
-window.onload = async () => {
+window.onload = () => {
     if (FacebookInstant.available) {
         FacebookInstant.InitializeAndStartAsync()
             .then(() => {
