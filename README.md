@@ -6,7 +6,7 @@ Read more: [Phaser Home Page](http://phaser.io/)
 It has many great examples covering all aspects of development at: [Phaser 3 Examples](http://labs.phaser.io/)
 
 ### Facebook Instant Games
-Facebook Instant Games functionality is only testable once your game is being hosted on the Facebook servers. It was important to check where the game was being hosted before attempting to integrate the Facebook Instant Games script into any game code. This was easy by looking at the window.location.host string and checking it matched “www.facebook.com“ and then making adjustments in the code to account for the host not being on Facebook while developing. Read more: [Facebook Developers Instant Games SDK](https://developers.facebook.com/docs/games/instant-games/sdk)
+Facebook Instant Games functionality is only testable once your game is being hosted on the Facebook servers. It was important to check where the game was being hosted before attempting to integrate the Facebook Instant Games SDK script into any game code. This was easy by looking at the window.location.host string and checking it matched “www.facebook.com“ and then making adjustments in the code to account for the host not being on Facebook while developing. Read more: [Facebook Developers Instant Games SDK](https://developers.facebook.com/docs/games/instant-games/sdk)
 
 ## How to get started
 ### Clone
