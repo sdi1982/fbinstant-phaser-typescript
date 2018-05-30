@@ -1,0 +1,26 @@
+{
+  "name": "fbinstant-phaser-typescript",
+  "version": "1.0.0",
+  "description": "Phaser 3 with Facebook Instant Games using TypeScript",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/turboignited/fbinstant-phaser-typescript.git"
+  },
+  "keywords": [
+    "Facebook",
+    "Instant",
+    "Games",
+    "Phaser",
+    "3",
+    "TypeScript"
+  ],
+  "author": "TurboIgnited",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/turboignited/fbinstant-phaser-typescript/issues"
+  },
+  "homepage": "https://github.com/turboignited/fbinstant-phaser-typescript#readme"
+}
