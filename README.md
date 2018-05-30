@@ -15,6 +15,12 @@ Facebook Instant Games functionality is only testable once your game is being ho
 Read more:
 [Facebook Developers Instant Games SDK](https://developers.facebook.com/docs/games/instant-games/sdk)
 
+## What the Project uses
+### Webpack for Production build
+Check out webpack.prod.js for information
+
+### Webpack-dev-server for Development
+Check out webpack.dev.js for information
 
 ## How to Get Started
 ### Clone
@@ -25,6 +31,8 @@ Install all the packages specific in package.json
 
 ### Run development server with webpack
 npm run dev
+Visit localhost:8080
 
 ### Build for production
 npm run build
+Output is bundle.js in dist folder
