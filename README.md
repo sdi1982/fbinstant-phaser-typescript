@@ -1,7 +1,4 @@
 # Starter Project for Phaser 3 and Facebook Instant Games using TypeScript
-## Introduction
-I only heard about Facebook Instant Games recently and was quick to jump on board and develop my first web friendly game. With Phaser 3 being the choice and TypeScript being the language of preference the game was on to develop. 
-
 ### Phaser 3
 Phaser 3 is a great free open source game engine which makes use of the native HTML5 elements and will work in the browser whether it supports WebGL or the simpler Canvas. 
 Read more: [Phaser Home Page](http://phaser.io/)
