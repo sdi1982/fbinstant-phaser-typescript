@@ -39,3 +39,4 @@ The dist folder can be compressed and uploaded to Facebook Instant Games Hosting
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server) - Development server
 * [TypeSript](https://github.com/Microsoft/TypeScript) - Scalable JavaScript
 * [Phaser 3 and Typings](https://github.com/photonstorm/phaser) - Game engine
+* [Facebook Developers Instant Games SDK](https://developers.facebook.com/docs/games/instant-games/sdk) - FBInstant made available by index.html
