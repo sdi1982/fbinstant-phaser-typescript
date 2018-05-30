@@ -1,3 +1,5 @@
+// Common webpack config for development and build scenarios, this is merged with them both so should cover only the bare necessities
+
 const path = require('path');
 
 module.exports = {
