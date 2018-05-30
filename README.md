@@ -15,7 +15,7 @@ Facebook Instant Games functionality is only testable once your game is being ho
 
 ## How to get started
 ### Clone
-You can clone or download this and push any changes you might have
+You can clone or download this and use it as you wish and help improve it
 
 ### Install Packages
 ```
