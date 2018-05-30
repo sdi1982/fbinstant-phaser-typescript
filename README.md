@@ -33,6 +33,8 @@ npm run build
 ```
 Output is bundle.js in dist folder
 
+The dist folder can be compressed and uploaded to Facebook Instant Games Hosting and tested
+
 ## Built With
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server) - Development server
 * [TypeSript](https://github.com/Microsoft/TypeScript) - Scalable JavaScript
