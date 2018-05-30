@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 12.0.0, SVG Export Plug-In  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg  version="1.1" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 width="80" height="80" viewBox="0 0 80 80" enable-background="new 0 0 80 80" xml:space="preserve">
+<defs>
+</defs>
+<g>
+	<path fill="#4CFF4C" d="M0.5,40c0,21.78,17.72,39.5,39.5,39.5S79.5,61.78,79.5,40S61.78,0.5,40,0.5S0.5,18.22,0.5,40z"/>
+	<path fill="#262626" d="M40,0C17.908,0,0,17.909,0,40c0,22.092,17.908,40,40,40c22.091,0,40-17.908,40-40C80,17.909,62.091,0,40,0
+		L40,0z M40,79c-5.266,0-10.373-1.031-15.181-3.064c-4.644-1.965-8.814-4.776-12.396-8.358s-6.394-7.752-8.359-12.396
+		C2.031,50.373,1,45.266,1,40c0-5.265,1.031-10.373,3.064-15.18c1.965-4.644,4.777-8.815,8.359-12.397s7.753-6.394,12.396-8.359
+		C29.627,2.031,34.734,1,40,1c5.265,0,10.373,1.031,15.18,3.064c4.645,1.965,8.815,4.777,12.397,8.359s6.394,7.753,8.358,12.397
+		C77.969,29.627,79,34.735,79,40c0,5.266-1.031,10.373-3.064,15.181c-1.965,4.644-4.776,8.814-8.358,12.396
+		s-7.753,6.394-12.397,8.358C50.373,77.969,45.265,79,40,79L40,79z"/>
+</g>
+<g>
+	<path fill="#262626" d="M40,0C17.908,0,0,17.909,0,40c0,22.092,17.908,40,40,40c22.091,0,40-17.908,40-40C80,17.909,62.091,0,40,0
+		L40,0z M40,76c-9.616,0-18.657-3.745-25.456-10.544S4,49.616,4,40s3.745-18.656,10.544-25.456C21.343,7.745,30.384,4,40,4
+		s18.656,3.745,25.456,10.544C72.255,21.344,76,30.384,76,40s-3.745,18.657-10.544,25.456C58.656,72.255,49.616,76,40,76L40,76z"/>
+</g>
+<line fill="none" stroke="#262626" stroke-width="4" stroke-linecap="round" x1="16" y1="32" x2="24" y2="24"/>
+<line fill="none" stroke="#262626" stroke-width="4" stroke-linecap="round" x1="24" y1="24" x2="32" y2="32"/>
+<line fill="none" stroke="#262626" stroke-width="4" stroke-linecap="round" x1="48" y1="32" x2="56" y2="24"/>
+<line fill="none" stroke="#262626" stroke-width="4" stroke-linecap="round" x1="56" y1="24" x2="64" y2="32"/>
+<path fill="none" stroke="#262626" stroke-width="4" stroke-linecap="round" d="M56,56c-4.9,2.143-10.31,3.338-16,3.338
+	S28.9,58.143,24,56"/>
+</svg>
