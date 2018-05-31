@@ -38,10 +38,18 @@ Output is bundle.js in dist folder
 The dist folder can be compressed and uploaded to Facebook Instant Games Hosting and tested
 
 ## Built with
+### Developmemt Dependencies
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server) - Development server
+* [webpack](https://github.com/webpack/webpack) - Production build bundler
+* [webpack-cli](https://github.com/webpack-contrib/uglifyjs-webpack-plugin) - Webpack command line interface
+* [uglifyjs-webpack-plugin](https://github.com/webpack-contrib/uglifyjs-webpack-plugin) - Production build pipeline
 * [TypeSript](https://github.com/Microsoft/TypeScript) - Scalable JavaScript
-* [Phaser 3 and Typings](https://github.com/photonstorm/phaser) - Game engine
-* [Facebook Developers Instant Games SDK](https://developers.facebook.com/docs/games/instant-games/sdk) - FBInstant made available by index.html
+
+### Production Dependencies
+* [Phaser 3 and Typings](https://github.com/photonstorm/phaser) - Game engine (part of bundle)
+
+### Other
+* [Facebook Developers Instant Games SDK](https://developers.facebook.com/docs/games/instant-games/sdk) - FBInstant made available by index.html (not part of bundle)
 
 ### Feature Requests
 * Typings for Facebook Instant Games SDK to remove some of the guesswork when using it
