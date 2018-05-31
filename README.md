@@ -41,6 +41,7 @@ The dist folder can be compressed and uploaded to Facebook Instant Games Hosting
 ### Development Dependencies
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server) - Development server
 * [webpack](https://github.com/webpack/webpack) - Production build bundler
+* [webpack-merge](https://github.com/survivejs/webpack-merge) - Webpack config merger
 * [webpack-cli](https://github.com/webpack-contrib/uglifyjs-webpack-plugin) - Webpack command line interface
 * [uglifyjs-webpack-plugin](https://github.com/webpack-contrib/uglifyjs-webpack-plugin) - Production build pipeline
 * [typesript](https://github.com/Microsoft/TypeScript) - Scalable JavaScript
