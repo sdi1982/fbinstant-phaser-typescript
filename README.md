@@ -38,12 +38,13 @@ Output is bundle.js in dist folder
 The dist folder can be compressed and uploaded to Facebook Instant Games Hosting and tested
 
 ## Built with
-### Developmemt Dependencies
+### Development Dependencies
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server) - Development server
 * [webpack](https://github.com/webpack/webpack) - Production build bundler
 * [webpack-cli](https://github.com/webpack-contrib/uglifyjs-webpack-plugin) - Webpack command line interface
 * [uglifyjs-webpack-plugin](https://github.com/webpack-contrib/uglifyjs-webpack-plugin) - Production build pipeline
-* [TypeSript](https://github.com/Microsoft/TypeScript) - Scalable JavaScript
+* [typesript](https://github.com/Microsoft/TypeScript) - Scalable JavaScript
+* [phaser typings](https://github.com/photonstorm/phaser3-docs/tree/master/typescript) - Typings for Phaser 3 (optional)
 
 ### Production Dependencies
 * [Phaser 3 and Typings](https://github.com/photonstorm/phaser) - Game engine (part of bundle)
