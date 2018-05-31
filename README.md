@@ -48,7 +48,7 @@ The dist folder can be compressed and uploaded to Facebook Instant Games Hosting
 * [phaser typings](https://github.com/photonstorm/phaser3-docs/tree/master/typescript) - Typings for Phaser 3 (optional)
 
 ### Production Dependencies
-* [Phaser 3 and Typings](https://github.com/photonstorm/phaser) - Game engine (part of bundle)
+* [phaser](https://github.com/photonstorm/phaser) - Game engine (part of bundle)
 
 ### Other
 * [Facebook Developers Instant Games SDK](https://developers.facebook.com/docs/games/instant-games/sdk) - FBInstant made available by index.html (not part of bundle)
