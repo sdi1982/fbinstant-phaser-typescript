@@ -58,3 +58,4 @@ The dist folder can be compressed and uploaded to Facebook Instant Games Hosting
 * Cleaner interface between the game and scoring mechanisms to make integration with Facebook much nicer
 * Tests, currently there are no tests but the functions should be simple enough to only accomplish one thing which they do
 * Anyone with some imagination will be able to improve this starter project, to make it easier for others starting out using this workflow
+* As with all game systems, a nice state management infrastructure goes a long way :)
