@@ -6,6 +6,7 @@ const gameWidth: number = 720;
 const gameHeight: number = 1280;
 var htmlCanvas: HTMLCanvasElement = null;
 
+// Not entirely sure how this works but there is maths involved so it should resize the canvas associated with the game correctly.
 const resize = () => {
     var windowWidth = window.innerWidth;
     var windowHeight = window.innerHeight;
@@ -22,6 +23,8 @@ const resize = () => {
 }
 
 export default class Game extends Phaser.Game {
+    // The game is configured using a predefined resolution so it is easier to design assets for
+    
     constructor() {
         super({
             width: gameWidth,
@@ -34,6 +37,7 @@ export default class Game extends Phaser.Game {
         htmlCanvas = this.canvas;
         window.focus()
         resize();
+        // Listen to the documents event for when the window is resized and call the resize function to handle the change in resolution
         window.addEventListener("resize", resize, false);
     }
 }
