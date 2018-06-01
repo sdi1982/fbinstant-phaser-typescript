@@ -7,7 +7,7 @@ module.exports = merge(common, {
     devtool: 'inline-source-map', // inline-source-map is important to get traceable console output
     devServer: {
         contentBase: './dist' // remember, everything goes into the dist (distribution) folder, and index.html being the
-                              // the first thing loaded needs the referenced output
+                              // first thing loaded needs the referenced output
     },
     plugins: [
         new webpack.DefinePlugin({
