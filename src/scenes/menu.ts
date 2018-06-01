@@ -10,7 +10,7 @@ export default class MenuScene extends Phaser.Scene {
     // This property will be persisted and continue to increment on each init() call by Phaser, use this to define certain behaviours
     private loadCount: number = -1;
     
-    // This property is toggled when the pause button is pressed, use this to manage operations
+    // This property is toggled to true after async operations have been completed
     private loading: boolean = true;
 
     constructor() {
