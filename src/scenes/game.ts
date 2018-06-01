@@ -9,6 +9,7 @@ export default class GameScene extends Phaser.Scene {
 
     private scoreText: Phaser.GameObjects.Text = null;
     private score: number;
+    // This property is toggled when the pause button is pressed, use this to manage operations
     private paused: boolean;
 
     constructor() {
