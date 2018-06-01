@@ -29,10 +29,10 @@ export default class Game extends Phaser.Game {
         super({
             width: gameWidth,
             height: gameHeight,
-            type: Phaser.AUTO,
+            type: Phaser.AUTO, // WebGL or Canvas, it doesn't matter :)
             backgroundColor: '#0C46E8',
             title: "FBInstant - Phaser TypeScript",
-            scene: [MenuScene, GameScene]
+            scene: [MenuScene, GameScene] // Load the scenes in external files to manage them independently
         });
         htmlCanvas = this.canvas;
         window.focus()
