@@ -11,7 +11,7 @@ const startGame = () => {
 }
 
 // When the browser has loaded this script, check if Facebook Instant Games SDK is available and initialize it if so
-// (as required by Facebook), and if not instantiate the game because it will be a development environment
+// (as required by Facebook), and if not jus instantiate the game because it will be a development environment
 window.onload = () => {
     if (FacebookInstant.available) {
         FacebookInstant.InitializeAndStartAsync()
