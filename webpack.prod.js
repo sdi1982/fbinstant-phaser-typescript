@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 // Attempts to shrinken the production build wherever possible
 module.exports = merge(common, {
-    mode: 'production',
+    mode: 'production', // this be production grade mode of operating
     plugins: [
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
