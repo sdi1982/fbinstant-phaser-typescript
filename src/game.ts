@@ -2,6 +2,7 @@ import "phaser";
 import MenuScene from "./scenes/menu";
 import GameScene from "./scenes/game";
 
+// Typical 16:9 resolution perfect for designing with. Unless you want 4k!
 const gameWidth: number = 720;
 const gameHeight: number = 1280;
 var htmlCanvas: HTMLCanvasElement = null;
