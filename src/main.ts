@@ -1,3 +1,4 @@
+// This is the entry point to the application as referenced by webpack which handles all the dependencies required herein.
 import Game from "./game";
 import FacebookInstant from './facebook';
 
