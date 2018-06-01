@@ -15,11 +15,13 @@ export default class GameScene extends Phaser.Scene {
         super({ key: "GameScene" });
     }
 
+    // 1st function called by the Phaser game engine
     public init() {
         this.score = Settings.score;
         this.paused = false;
     }
-
+    
+    // 3rd function called by the Phaser game engine, preload is 2nd
     public create() {
         this.createButtons();
         this.addButtonListeners();
