@@ -6,7 +6,11 @@ export default class MenuScene extends Phaser.Scene {
     private scoreText: Phaser.GameObjects.Text = null;
     private nameText: Phaser.GameObjects.Text = null;
     private playButton: Phaser.GameObjects.Image = null;
+    
+    // This property will be persisted and continue to increment on each init() call by Phaser, use this to define certain behaviours
     private loadCount: number = -1;
+    
+    // This property is toggled when the pause button is pressed, use this to manage operations
     private loading: boolean = true;
 
     constructor() {
