@@ -1,3 +1,4 @@
+// Only way to assume Facebook Instant Games SDK is available in TypeScript is to declare the namespace it will encompass
 declare var FBInstant: any;
 
 export default class FacebookInstant {
