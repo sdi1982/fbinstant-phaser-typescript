@@ -9,7 +9,7 @@ module.exports = merge(common, {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
-        new UglifyJSPlugin({
+        new UglifyJSPlugin({ // just save the bandwidth, go on i dare you :D
             uglifyOptions: {
                 output: {
                     comments: false,
