@@ -22,9 +22,6 @@ export default class FacebookInstant {
     public static get loaded(): boolean {
         return this._hasLoaded;
     }
-
-
-
     public static get available(): boolean {
         return window.location.host == "www.facebook.com";
     }
