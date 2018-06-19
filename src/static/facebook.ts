@@ -63,7 +63,7 @@ export default class FacebookInstant {
      */
     public static StartGameAsync(): Promise<boolean> {
         return new Promise((resolve) => {
-            if (this._hasInitialized && this._hasLoaded) {
+            if (this._hasInitialized && this._hasLoaded && !this._hasStarted) {
                 FBInstant.startGameAsync()
                     .then(() => {
                         this._hasStarted = true;
