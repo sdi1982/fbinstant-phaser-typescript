@@ -1,6 +1,4 @@
-import Settings from "../settings";
-import FacebookInstant from "../facebook";
-
+import Settings from "../static/settings";
 
 export default class GameScene extends Phaser.Scene {
     private pauseButton: Phaser.GameObjects.Image = null;
@@ -13,12 +11,11 @@ export default class GameScene extends Phaser.Scene {
     private paused: boolean;
 
     constructor() {
-        super({ key: "GameScene" });
+        super({ key: Settings.gameScene });
     }
 
     // 1st function called by the Phaser game engine
     public init() {
-        this.score = Settings.score;
         this.paused = false;
     }
     
@@ -26,7 +23,6 @@ export default class GameScene extends Phaser.Scene {
     public create() {
         this.createButtons();
         this.addButtonListeners();
-        this.createScoreText();
         this.fadeIn();
     }
 
@@ -35,11 +31,11 @@ export default class GameScene extends Phaser.Scene {
     }
 
 
-    private createScoreText() {
-        this.scoreText = this.add.text(360, 620, this.score.toString(), { fontFamily: 'Arial', fontSize: 100, color: '#B6FF0D', align: 'center' });
-        this.scoreText.setShadow(0, 0, '#000000', 20, false, true);
-        this.scoreText.setOrigin(0.5, 0.5);
-    }
+    //private createScoreText() {
+    //    this.scoreText = this.add.text(360, 620, this.score.toString(), { fontFamily: 'Arial', fontSize: 100, color: '#B6FF0D', align: 'center' });
+    //    this.scoreText.setShadow(0, 0, '#000000', 20, false, true);
+    //    this.scoreText.setOrigin(0.5, 0.5);
+    //}
 
 
     private createButtons() {
@@ -65,24 +61,11 @@ export default class GameScene extends Phaser.Scene {
     }
 
     private onExitButtonClicked(pointer: Phaser.Input.Pointer) {
-        FacebookInstant.SetPlayerScore(this.score)
-            .then(() => {
-                FacebookInstant.AddLeaderboardScore(this.score)
-                    .then(() => {
-                        this.startMenuScene();
-                    })
-                    .catch(() => {
-                        this.startMenuScene();
-                    });
-            })
-            .catch((err: any) => {
-                console.error('SetPlayerScore()', err);
-                this.startMenuScene();
-            });
+       
     }
 
     private startMenuScene() {
-        this.scene.start("MenuScene");
+        this.scene.start(Settings.menuScene);
     }
 
     private onRestartButtonClicked(pointer: Phaser.Input.Pointer) {

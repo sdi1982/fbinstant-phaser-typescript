@@ -1,0 +1,23 @@
+{
+  "assets": {
+    "path": "assets/images",
+    "defaultType": "svg",
+    "files": [
+      {
+        "key": "exit"
+      },
+      {
+        "key": "happy"
+      },
+      {
+        "key": "pause"
+      },
+      {
+        "key": "play"
+      },
+      {
+        "key": "restart"
+      }
+    ]
+  }
+}
