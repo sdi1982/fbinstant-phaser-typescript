@@ -3,11 +3,40 @@
 import "phaser";
 import MenuScene from "./scenes/menu";
 import GameScene from "./scenes/game";
-import LoadScene from "./scenes/load";
 import Settings from "./static/settings";
 import FacebookInstant from "./static/facebook";
 
-var main: Main = null;
+
+class Load extends Phaser.Scene {
+    private _loaded: boolean = false;
+
+    constructor() {
+        super({ key: Settings.loadScene });
+    }
+
+    public preload() {
+        if (!this._loaded) {
+            this.load.on('progress', (value: number) => {
+                const percent = Math.abs(100 * value);
+                FacebookInstant.SetLoadingProgress(percent);
+            });
+            this.load.on('complete', async () => {
+                this._loaded = true;
+                FacebookInstant.SetLoadingProgress(100);
+                await FacebookInstant.StartGameAsync();
+                this.scene.start(Settings.menuScene);
+
+            });
+            this.load.svg('exit', 'assets/images/exit.svg');
+            this.load.svg('happy', 'assets/images/happy.svg');
+            this.load.svg('pause', 'assets/images/pause.svg');
+            this.load.svg('play', 'assets/images/play.svg');
+            this.load.svg('restart', 'assets/images/restart.svg');
+        } else {
+            this.scene.start(Settings.menuScene);
+        }
+    }
+}
 
 class Main extends Phaser.Game {
     constructor() {
@@ -17,15 +46,12 @@ class Main extends Phaser.Game {
             height: Settings.gameHeight,
             backgroundColor: Settings.backgroundColour,
             title: Settings.gameTitle,
-            scene: [LoadScene, MenuScene, GameScene]
-
+            scene: [Load, MenuScene, GameScene]
         });
-        this.resize(window.innerWidth, window.innerHeight);
-
         window.addEventListener('resize', (event) => {
             this.resize(window.innerWidth, window.innerHeight);
         }, false);
-        this.events.on('resize', this.resize, this);
+        this.resize(window.innerWidth, window.innerHeight);
     }
 
     public resize(width: number, height: number) {
@@ -41,25 +67,9 @@ class Main extends Phaser.Game {
         }
     }
 }
+var main: Main = null;
 
-window.onload = () => {
-    if (FacebookInstant.available) {
-        FacebookInstant.InitializeAsync()
-            .then(() => {
-                FacebookInstant.SetLoadingProgress(100);
-                FacebookInstant.StartGameAsync()
-                    .then(() => {
-                        main = new Main();
-                    })
-                    .catch(() => {
-
-                    });
-            })
-            .catch(() => {
-
-            });
-    } else {
-        main = new Main();
-    }
-
+window.onload = async () => {
+    await FacebookInstant.InitializeAsync();
+    main = new Main();
 }

@@ -29,47 +29,54 @@ export default class FacebookInstant {
      * Initializes the SDK library. This should be called before any other SDK functions.
      */
     public static InitializeAsync(): Promise<boolean> {
-        return new Promise((resolve, reject) => {
-            FBInstant.initializeAsync()
-                .then(() => {
-                    this._hasInitialized = true;
-                    resolve(true);
-                })
-                .catch((err: any) => {
-                    this._hasInitialized = false;
-                    reject(false);
-                });
+        return new Promise((resolve) => {
+            if (this.available) {
+                FBInstant.initializeAsync()
+                    .then(() => {
+                        this._hasInitialized = true;
+                        resolve(true);
+                    })
+                    .catch((err: any) => {
+                        this._hasInitialized = false;
+                        resolve(false);
+                    });
+            } else {
+                resolve(false);
+            }
         })
     }
     /*
      * Report the game's initial loading progress.
      * @param percentage number A number between 0 and 100.
      */
-    public static SetLoadingProgress(percentage: number): boolean {
-        if (this._hasLoaded) {
-            return true;
+    public static SetLoadingProgress(percentage: number) {
+        if (this._hasInitialized && !this._hasLoaded) {
+            FBInstant.setLoadingProgress(percentage);
+            if (percentage >= 100) {
+                this._hasLoaded = true;
+            }
         }
-        FBInstant.setLoadingProgress(percentage);
-        if (percentage >= 100) {
-            this._hasLoaded = true;
-        }
-        return this._hasLoaded;
     }
 
     /*
      * This indicates that the game has finished initial loading and is ready to start. Context information will be up-to-date when the returned promise resolves.
      */
     public static StartGameAsync(): Promise<boolean> {
-        return new Promise((resolve, reject) => {
-            FBInstant.startGameAsync()
-                .then(() => {
-                    this._hasStarted = true;
-                    resolve(true);
-                })
-                .catch((err: any) => {
-                    this._hasStarted = false;
-                    reject(false);
-                });
+        return new Promise((resolve) => {
+            if (this._hasInitialized && this._hasLoaded) {
+                FBInstant.startGameAsync()
+                    .then(() => {
+                        this._hasStarted = true;
+                        resolve(true);
+                    })
+                    .catch((err: any) => {
+                        this._hasStarted = false;
+                        resolve(false);
+                    });
+            } else {
+                this._hasStarted = false;
+                resolve(false);
+            }
         })
     }
 
@@ -92,12 +99,4 @@ export default class FacebookInstant {
         }
         return "";
     }
-    public static TestAsync(milliseconds: number): Promise<boolean> {
-        return new Promise<boolean>(resolve => {
-            setTimeout(() => {
-                resolve(true);
-            }, milliseconds);
-        });
-    }
-
 }

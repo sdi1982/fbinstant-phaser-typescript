@@ -9,8 +9,25 @@ export default class MenuScene extends Phaser.Scene {
 
     public create() {
         this.addButtons();
+        this.addFacebookDiagnostics();
         this.addFacebookData();
         this.fadeIn();
+    }
+
+    private addFacebookDiagnostics() {
+
+        const title = this.add.text(Settings.gameWidth * 0.5, 0, 'Facebook Instant Diagnostics', { fontFamily: 'Arial', fontSize: 40, color: '#B6FF0D', align: 'left' });
+
+        const initialized = this.add.text(Settings.gameWidth * 0.5, 50, `Initialized: ${FacebookInstant.initialized ? 'Yes' : 'No'}`, { fontFamily: 'Arial', fontSize: 30, color: '#B6FF0D', align: 'left' });
+        const loaded = this.add.text(Settings.gameWidth * 0.5, 100, `Loaded: ${FacebookInstant.loaded ? 'Yes' : 'No'}`, { fontFamily: 'Arial', fontSize: 30, color: '#B6FF0D', align: 'left' });
+        const started = this.add.text(Settings.gameWidth * 0.5, 150, `Started: ${FacebookInstant.started ? 'Yes' : 'No'}`, { fontFamily: 'Arial', fontSize: 30, color: '#B6FF0D', align: 'left' });
+
+        title.setOrigin(0.5, 0);
+        initialized.setOrigin(0.5, 0);
+        loaded.setOrigin(0.5, 0);
+        started.setOrigin(0.5, 0);
+        
+
     }
 
     private addFacebookData() {
@@ -22,10 +39,6 @@ export default class MenuScene extends Phaser.Scene {
             welcomeMessage.setShadow(0, 0, '#000000', 10, false, true);
             this.load.image('player', playerName);
             const playerImage = this.add.image(Settings.gameWidth * 0.5, Settings.gameHeight + 200, 'player');
-        } else {
-            const unavailableMessage = this.add.text(Settings.gameWidth * 0.5, Settings.gameHeight * 0.5, 'Facebook Instant is not available', { fontFamily: 'Arial', fontSize: 40, color: '#B6FF0D', align: 'center' });
-            unavailableMessage.setOrigin(0.5, 0.5);
-            unavailableMessage.setShadow(0, 0, '#000000', 10, false, true);
         }
     }
 
