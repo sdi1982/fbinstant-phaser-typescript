@@ -1,5 +1,7 @@
 # Starter Project for Phaser 3 and Facebook Instant Games using TypeScript
 
+### Please be aware that this is currently in an example stage and does not necessarily work.
+
 A TypeScript webpack project that includes the phaser library in its output. Base build size is ~700KB. Facebook Instant Games SDK is available when loaded in the browser. As no typings are available for the SDK there is a bit of guesswork involved with integrating it in game.
 
 The aim of the project is to create a quicker entry to development using these libraries and exploiting them as much as possible.
@@ -15,7 +17,7 @@ Facebook Instant Games functionality is only testable once your game is being ho
 
 ## How to get started
 ### Clone
-You can clone or download this and use it as you wish and help improve it
+You can clone or download this and use it as you wish and help improve it.
 
 ### Install Packages
 ```

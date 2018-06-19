@@ -25,6 +25,6 @@ export default class Settings {
         return 'MenuScene';
     }
     public static get backgroundColour(): string {
-        return "#FFFF00";
+        return "#111111";
     }
 }

@@ -5,6 +5,7 @@ import MenuScene from "./scenes/menu";
 import GameScene from "./scenes/game";
 import LoadScene from "./scenes/load";
 import Settings from "./static/settings";
+import FacebookInstant from "./static/facebook";
 
 var main: Main = null;
 
@@ -42,7 +43,23 @@ class Main extends Phaser.Game {
 }
 
 window.onload = () => {
-    if (main == null) {
+    if (FacebookInstant.available) {
+        FacebookInstant.InitializeAsync()
+            .then(() => {
+                FacebookInstant.SetLoadingProgress(100);
+                FacebookInstant.StartGameAsync()
+                    .then(() => {
+                        main = new Main();
+                    })
+                    .catch(() => {
+
+                    });
+            })
+            .catch(() => {
+
+            });
+    } else {
         main = new Main();
     }
+
 }

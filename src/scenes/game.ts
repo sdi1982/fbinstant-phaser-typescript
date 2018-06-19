@@ -30,14 +30,6 @@ export default class GameScene extends Phaser.Scene {
         this.cameras.main.fadeFrom(1000, 0, 0, 0);
     }
 
-
-    //private createScoreText() {
-    //    this.scoreText = this.add.text(360, 620, this.score.toString(), { fontFamily: 'Arial', fontSize: 100, color: '#B6FF0D', align: 'center' });
-    //    this.scoreText.setShadow(0, 0, '#000000', 20, false, true);
-    //    this.scoreText.setOrigin(0.5, 0.5);
-    //}
-
-
     private createButtons() {
         this.pauseButton = this.add.image(360, 1200, 'pause');
         this.exitButton = this.add.image(180, 1200, 'exit');
@@ -55,13 +47,11 @@ export default class GameScene extends Phaser.Scene {
 
 
     private onPauseButtonClicked(pointer: Phaser.Input.Pointer) {
-
-
         this.paused = !this.paused;
     }
 
     private onExitButtonClicked(pointer: Phaser.Input.Pointer) {
-       
+        this.startMenuScene();
     }
 
     private startMenuScene() {

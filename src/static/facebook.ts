@@ -31,18 +31,18 @@ export default class FacebookInstant {
     /*
      * Initializes the SDK library. This should be called before any other SDK functions.
      */
-    public static async InitializeAsync(): Promise<boolean> {
-        if (this._hasInitialized) {
-            return true;
-        }
-        await FBInstant.initializeAsync()
-            .then(() => {
-                this._hasInitialized = true;
-            })
-            .catch((err: any) => {
-                this._hasInitialized = false;
-            });
-        return this._hasInitialized;
+    public static InitializeAsync(): Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            FBInstant.initializeAsync()
+                .then(() => {
+                    this._hasInitialized = true;
+                    resolve(true);
+                })
+                .catch((err: any) => {
+                    this._hasInitialized = false;
+                    reject(false);
+                });
+        })
     }
     /*
      * Report the game's initial loading progress.
@@ -62,18 +62,18 @@ export default class FacebookInstant {
     /*
      * This indicates that the game has finished initial loading and is ready to start. Context information will be up-to-date when the returned promise resolves.
      */
-    public static async StartGameAsync(): Promise<boolean> {
-        if (this._hasStarted) {
-            return true;
-        }
-        await FBInstant.startGameAsync()
-            .then(() => {
-                this._hasStarted = true;
-            })
-            .catch((err: any) => {
-                this._hasStarted = false;
-            });
-        return this._hasStarted;
+    public static StartGameAsync(): Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            FBInstant.startGameAsync()
+                .then(() => {
+                    this._hasStarted = true;
+                    resolve(true);
+                })
+                .catch((err: any) => {
+                    this._hasStarted = false;
+                    reject(false);
+                });
+        })
     }
 
     //    var playerName = FBInstant.player.getName();
@@ -84,11 +84,17 @@ export default class FacebookInstant {
      * 
      */
     public static GetPlayerName(): string {
-        return null;
+        if (this._hasStarted) {
+            return FBInstant.player.getName();
+        }
+        return "";
     }
-
-
-
+    public static GetPlayerPhoto(): string {
+        if (this._hasStarted) {
+            return FBInstant.player.getPhoto();
+        }
+        return "";
+    }
     public static TestAsync(milliseconds: number): Promise<boolean> {
         return new Promise<boolean>(resolve => {
             setTimeout(() => {
