@@ -35,7 +35,8 @@ npm run build
 ```
 Output is bundle.js in dist folder
 
-The dist folder can be compressed and uploaded to Facebook Instant Games Hosting and tested
+The contents of dist folder can be compressed and uploaded to Facebook Instant Games Hosting and tested
+* this includes index.html aswell as assets folder and bundle.js
 
 ## Built with
 ### Development Dependencies
@@ -53,13 +54,16 @@ The dist folder can be compressed and uploaded to Facebook Instant Games Hosting
 ### Other
 * [Facebook Developers Instant Games SDK](https://developers.facebook.com/docs/games/instant-games/sdk) - FBInstant made available by index.html (not part of bundle)
 
-### Feature Requests
-* Typings for Facebook Instant Games SDK to remove some of the guesswork when using it
-* Cleaner interface between the game and scoring mechanisms to make integration with Facebook much nicer
-* Tests, currently there are no tests but the functions should be simple enough to only accomplish one thing which they do
-* Anyone with some imagination will be able to improve this starter project, to make it easier for others starting out using this workflow
-* As with all game systems, a nice state management infrastructure goes a long way :)
-
+### Flow of Events
+#### main.ts
+1) Phaser Game is instantiated using properties from settings.ts and specifies scene files to load
+2) Handler for rezising the game when the window changes is registered.
+#### scenes/load.ts
+1) Assets specified in assets/assets.json are loaded within the scene's preload method
+2) Facebook Instant is checked to be available and initialized following SDK procedures (with loading progress)
+3) After all loading has finished, the menu scene is started
+#### scenes/menu.ts
+1) The menu scene can display Facebook data (if initialized in load.ts) and start the game on button click etc.
 
 ### How to Test/Publish on Facebook for Developers
 #### 1) Setup App with Facebook
@@ -76,7 +80,15 @@ F) Enter a description in the about this version... section
 G) Upload
 H) Select the uploaded bundle and click the star 'Push to Production'
 ```
-##### 3) Test the Game on Facebook Messenger App
+#### 3) Test the Game on Facebook Messenger App
 ```
 When the app is uploaded it can be tested on Facebook Messenger App where your app will be under 'Games->In development'
 ```
+
+
+### Feature Requests
+* Typings for Facebook Instant Games SDK to remove some of the guesswork when using it
+* Cleaner interface between the game and scoring mechanisms to make integration with Facebook much nicer
+* Tests, currently there are no tests but the functions should be simple enough to only accomplish one thing which they do
+* Anyone with some imagination will be able to improve this starter project, to make it easier for others starting out using this workflow
+* As with all game systems, a nice state management infrastructure goes a long way :)
