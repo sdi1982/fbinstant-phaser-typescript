@@ -70,5 +70,13 @@ B) Add 'Instant Games' Product
 #### 2) Upload to Facebook
 ```
 C) Build Game for Production
-D) 
+D) Compress contents of dist folder into .zip or .7z format
+E) Browse .zip or .7z file to Instant Games->Web Hosting section
+F) Enter a description in the about this version... section
+G) Upload
+H) Select the uploaded bundle and click the star 'Push to Production'
+```
+##### 3) Test the Game on Facebook Messenger App
+```
+When the app is uploaded it can be tested on Facebook Messenger App where your app will be under 'Games->In development'
 ```
