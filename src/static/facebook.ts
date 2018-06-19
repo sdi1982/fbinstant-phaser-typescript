@@ -30,7 +30,7 @@ export default class FacebookInstant {
      */
     public static InitializeAsync(): Promise<boolean> {
         return new Promise((resolve) => {
-            if (this.available) {
+            if (this.available && !this._hasInitialized) {
                 FBInstant.initializeAsync()
                     .then(() => {
                         this._hasInitialized = true;
