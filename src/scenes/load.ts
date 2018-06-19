@@ -49,7 +49,7 @@ export default class LoadScene extends Phaser.Scene {
     }
 
     private cantStartFacebook() {
-        this.scene.start(Settings.menuScene);
+        this.startMenuScene();
     }
 
     private loadAssets() {
