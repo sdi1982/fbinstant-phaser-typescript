@@ -59,3 +59,16 @@ The dist folder can be compressed and uploaded to Facebook Instant Games Hosting
 * Tests, currently there are no tests but the functions should be simple enough to only accomplish one thing which they do
 * Anyone with some imagination will be able to improve this starter project, to make it easier for others starting out using this workflow
 * As with all game systems, a nice state management infrastructure goes a long way :)
+
+
+### How to Test/Publish on Facebook for Developers
+#### 1) Setup App with Facebook
+```
+A) Create a new App on Facebook for Developers
+B) Add 'Instant Games' Product
+```
+#### 2) Upload to Facebook
+```
+C) Build Game for Production
+D) 
+```
