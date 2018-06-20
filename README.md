@@ -73,7 +73,8 @@ The contents of dist folder can be compressed and uploaded to Facebook Instant G
 * Select the uploaded bundle and click the star 'Push to Production'
 
 #### 3) Test the Game on Facebook Messenger App
-When the app is uploaded it can be tested on Facebook Messenger App where your app will be under 'Games->In development'
+* When the app is uploaded it can be tested on Facebook Messenger App where your app will be under 'Games->In development'
+* You can also share the app with yourself and play it on the browser, as well as get console output for diagnostics.
 
 ### Feature Requests
 * Typings for Facebook Instant Games SDK to remove some of the guesswork when using it
