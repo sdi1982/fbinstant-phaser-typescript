@@ -43,6 +43,23 @@ Output is bundle.js in dist folder
 The contents of dist folder can be compressed and uploaded to Facebook Instant Games Hosting and tested
 * this includes index.html aswell as assets folder and bundle.js
 
+## How to Test/Publish on Facebook for Developers
+### 1) Setup App with Facebook
+* Create a new App on Facebook for Developers
+* Add 'Instant Games' Product
+
+### 2) Upload to Facebook
+* Build Game for Production
+* Compress contents of dist folder into .zip or .7z format
+* Browse .zip or .7z file to Instant Games->Web Hosting section
+* Enter a description in the about this version... section
+* Upload
+* Select the uploaded bundle and click the star 'Push to Production'
+
+### 3) Test the Game on Facebook Messenger App
+* When the app is uploaded it can be tested on Facebook Messenger App where your app will be under 'Games->In development'
+* You can also share the app with yourself and play it on the browser, as well as get console output for diagnostics.
+
 ## Built with
 ### Development Dependencies
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server) - Development server
@@ -59,24 +76,7 @@ The contents of dist folder can be compressed and uploaded to Facebook Instant G
 ### Other
 * [Facebook Developers Instant Games SDK](https://developers.facebook.com/docs/games/instant-games/sdk) - FBInstant made available by index.html (not part of bundle)
 
-### How to Test/Publish on Facebook for Developers
-#### 1) Setup App with Facebook
-* Create a new App on Facebook for Developers
-* Add 'Instant Games' Product
-
-#### 2) Upload to Facebook
-* Build Game for Production
-* Compress contents of dist folder into .zip or .7z format
-* Browse .zip or .7z file to Instant Games->Web Hosting section
-* Enter a description in the about this version... section
-* Upload
-* Select the uploaded bundle and click the star 'Push to Production'
-
-#### 3) Test the Game on Facebook Messenger App
-* When the app is uploaded it can be tested on Facebook Messenger App where your app will be under 'Games->In development'
-* You can also share the app with yourself and play it on the browser, as well as get console output for diagnostics.
-
-### Feature Requests
+## Feature Requests
 * Typings for Facebook Instant Games SDK to remove some of the guesswork when using it
 * Cleaner interface between the game and scoring mechanisms to make integration with Facebook much nicer
 * Tests, currently there are no tests but the functions should be simple enough to only accomplish one thing which they do
