@@ -72,28 +72,6 @@ The contents of dist folder can be compressed and uploaded to Facebook Instant G
 #### 3) Test the Game on Facebook Messenger App
 When the app is uploaded it can be tested on Facebook Messenger App where your app will be under 'Games->In development'
 
-### How to test in your browser
-* First upload compressed dist folder contents to Facebook
-* Install http-server globally
-```
-npm install -g http-server
-```
-* Generate cert.pem and key.pem with OpenSSL
-```
-openssl genrsa 2048 > key.pem
-```
-```
-openssl req -x509 -days 1000 -new -key key.pem -out cert.pem
-```
-* Copy cert.pem and key.pem to dist folder
-* Start http-server from within the dist folder
-```
-http-server --ssl -c-1 -p 8080 -a 127.0.0.1
-```
-* Visit https://localhost:8080/ and bypass any warnings to load the game
-* Visit https://www.facebook.com/embed/instantgames/YOUR_GAME_ID/player?game_url=https://localhost:8080 to play the game as if it was on Facebook
-* Success!
-
 ### Feature Requests
 * Typings for Facebook Instant Games SDK to remove some of the guesswork when using it
 * Cleaner interface between the game and scoring mechanisms to make integration with Facebook much nicer
