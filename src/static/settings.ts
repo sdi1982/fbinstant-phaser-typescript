@@ -24,7 +24,10 @@ export default class Settings {
     public static get menuScene(): string {
         return 'MenuScene';
     }
+    public static get pauseScene(): string {
+        return 'PauseScene';
+    }
     public static get backgroundColour(): string {
-        return "#111111";
+        return "#0f0f0f";
     }
 }

@@ -8,7 +8,6 @@ export default class GameScene extends Phaser.Scene {
     private scoreText: Phaser.GameObjects.Text = null;
     private score: number;
     // This property is toggled when the pause button is pressed, use this to manage operations
-    private paused: boolean;
 
     constructor() {
         super({ key: Settings.gameScene });
@@ -19,7 +18,6 @@ export default class GameScene extends Phaser.Scene {
     // 1st function called by the Phaser game engine
     public init() {
         console.log("GameScene.init()");
-        this.paused = false;
     }
     
     // 3rd function called by the Phaser game engine, preload is 2nd
@@ -52,14 +50,11 @@ export default class GameScene extends Phaser.Scene {
 
 
     private onPauseButtonClicked(pointer: Phaser.Input.Pointer) {
-        this.paused = !this.paused;
+        this.scene.pause(Settings.gameScene);
+        this.scene.launch(Settings.pauseScene);
     }
 
     private onExitButtonClicked(pointer: Phaser.Input.Pointer) {
-        this.startMenuScene();
-    }
-
-    private startMenuScene() {
         this.scene.start(Settings.menuScene);
     }
 

@@ -9,15 +9,15 @@ module.exports = merge(common, {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
-        new UglifyJSPlugin({ // just save the bandwidth, go on i dare you :D
+        new UglifyJSPlugin({
             uglifyOptions: {
                 output: {
-                    comments: false,
+                    comments: false, 
                     beautify: false
                 },
                 compress: {
-                    warnings: false,
-                    drop_console: true
+                    warnings: true,
+                    drop_console: true // Set to true when happy with removing console output
                 }
             }
         })
