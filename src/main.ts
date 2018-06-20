@@ -25,6 +25,7 @@ function preload() {
     this.load.svg('pause', 'assets/images/pause.svg');
     this.load.svg('play', 'assets/images/play.svg');
     this.load.svg('restart', 'assets/images/restart.svg');
+    
 }
 
 function create() {
@@ -66,8 +67,8 @@ const config: GameConfig = {
 window.onload = () => {
     FacebookInstant.InitializeAsync()
         .then((value: boolean) => {
-            console.log('FBInstant InitializeAsync', value);
-
+            console.log('FBInstant Initialized:', value);
+            
             game = new Phaser.Game(config);
             game.scene.add(Settings.menuScene, MenuScene);
             game.scene.add(Settings.gameScene, GameScene);

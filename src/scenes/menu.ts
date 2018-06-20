@@ -7,30 +7,37 @@ export default class MenuScene extends Phaser.Scene {
         super({ key: Settings.menuScene });
         console.log("MenuScene.constructor()");
     }
-    public init() {
-        console.log("MenuScene.init()");
-    }
+
     public create() {
         console.log("MenuScene.create()");
         this.addButtons();
+        this.addTitle();
         this.addFacebookDiagnostics();
         this.addFacebookData();
         this.fadeIn();
     }
 
+    private addTitle() {
+        const title = this.add.text(Settings.gameWidth * 0.5, 80, Settings.menuScene, { fontFamily: 'Arial', fontSize: 40, color: '#FFFFFF', align: 'left' });
+        title.setOrigin(0.5, 0.5);
+    }
+
     private addFacebookDiagnostics() {
+        const fontStyle = { fontFamily: 'Arial', fontSize: 30, color: '#B6FF0D', align: 'left' }
+        const title = this.add.text(Settings.gameWidth * 0.1, 160, 'Facebook Instant Diagnostics', fontStyle);
 
-        const title = this.add.text(Settings.gameWidth * 0.5, 0, 'Facebook Instant Diagnostics', { fontFamily: 'Arial', fontSize: 40, color: '#B6FF0D', align: 'left' });
+        const initialized = this.add.text(Settings.gameWidth * 0.1, 220, `Initialized: ${FacebookInstant.initialized ? 'Yes' : 'No'}`, fontStyle);
+        const loaded = this.add.text(Settings.gameWidth * 0.1, 280, `Loaded: ${FacebookInstant.loaded ? 'Yes' : 'No'}`, fontStyle);
+        const started = this.add.text(Settings.gameWidth * 0.1, 340, `Started: ${FacebookInstant.started ? 'Yes' : 'No'}`, fontStyle);
+        const name = this.add.text(Settings.gameWidth * 0.1, 400, `Player Name: ${FacebookInstant.GetPlayerName()}`, fontStyle)
+        const photo = this.add.text(Settings.gameWidth * 0.1, 460, `Player Photo: ${FacebookInstant.GetPlayerPhoto()}`, fontStyle)
+        title.setOrigin(0, 0);
+        initialized.setOrigin(0, 0);
+        loaded.setOrigin(0, 0);
+        started.setOrigin(0, 0);
+        name.setOrigin(0, 0);
+        photo.setOrigin(0, 0);
 
-        const initialized = this.add.text(Settings.gameWidth * 0.5, 50, `Initialized: ${FacebookInstant.initialized ? 'Yes' : 'No'}`, { fontFamily: 'Arial', fontSize: 30, color: '#B6FF0D', align: 'left' });
-        const loaded = this.add.text(Settings.gameWidth * 0.5, 100, `Loaded: ${FacebookInstant.loaded ? 'Yes' : 'No'}`, { fontFamily: 'Arial', fontSize: 30, color: '#B6FF0D', align: 'left' });
-        const started = this.add.text(Settings.gameWidth * 0.5, 150, `Started: ${FacebookInstant.started ? 'Yes' : 'No'}`, { fontFamily: 'Arial', fontSize: 30, color: '#B6FF0D', align: 'left' });
-
-        title.setOrigin(0.5, 0);
-        initialized.setOrigin(0.5, 0);
-        loaded.setOrigin(0.5, 0);
-        started.setOrigin(0.5, 0);
-        
 
     }
 
@@ -47,9 +54,19 @@ export default class MenuScene extends Phaser.Scene {
     }
 
     private addButtons() {
-        const playButton = this.add.image(360, 1200, 'play');
-        playButton.setInteractive();
-        playButton.on('pointerup', this.onPlayButtonClicked, this);
+        const playButton = this.add.image(360, Settings.gameHeight, 'play');
+
+        this.tweens.add({
+            targets: playButton,
+            x: 360,
+            y: 1200,
+            duration: 200,
+            ease: 'Quad.easeIn',
+            onComplete: () => {
+                playButton.setInteractive();
+                playButton.on('pointerup', this.onPlayButtonClicked, this);
+            }
+        });
     }
 
     private onPlayButtonClicked(pointer: Phaser.Input.Pointer) {

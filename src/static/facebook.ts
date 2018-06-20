@@ -27,9 +27,6 @@ export default class FacebookInstant {
      * Initializes the SDK library. This should be called before any other SDK functions.
      */
     public static InitializeAsync(): Promise<boolean> {
-        console.log('1.InitializeAsync()');
-        console.log('window.location.host', );
-        console.log('Initialized:', this._hasInitialized);
         return new Promise<boolean>((resolve) => {
             if (!this._hasInitialized && window.location.host != "localhost:8080") {
 
@@ -61,9 +58,6 @@ export default class FacebookInstant {
      * @param percentage number A number between 0 and 100.
      */
     public static SetLoadingProgress(percentage: number) {
-        console.log('2.SetLoadingProgress()');
-        console.log('Initialized:', this._hasInitialized, 'Loaded:', this._hasLoaded);
-
         if (this._hasInitialized && !this._hasLoaded) {
             FBInstant.setLoadingProgress(percentage);
             if (percentage >= 100) {
@@ -77,9 +71,6 @@ export default class FacebookInstant {
      * This indicates that the game has finished initial loading and is ready to start. Context information will be up-to-date when the returned promise resolves.
      */
     public static StartGameAsync(): Promise<boolean> {
-        console.log('3.StartGameAsync()');
-        console.log('Initialized:', this._hasInitialized, 'Loaded:', this._hasLoaded, 'Started:', this._hasStarted);
-
         return new Promise<boolean>((resolve) => {
             if (this._hasInitialized && this._hasLoaded && !this._hasStarted) {
                 FBInstant.startGameAsync()

@@ -1,14 +1,6 @@
 import Settings from "../static/settings";
 
 export default class GameScene extends Phaser.Scene {
-    private pauseButton: Phaser.GameObjects.Image = null;
-    private restartButton: Phaser.GameObjects.Image = null;
-    private exitButton: Phaser.GameObjects.Image = null;
-
-    private scoreText: Phaser.GameObjects.Text = null;
-    private score: number;
-    // This property is toggled when the pause button is pressed, use this to manage operations
-
     constructor() {
         super({ key: Settings.gameScene });
 
@@ -24,8 +16,8 @@ export default class GameScene extends Phaser.Scene {
     public create() {
 
         console.log("GameScene.create()");
-        this.createButtons();
-        this.addButtonListeners();
+        this.addButtons();
+        this.addTitle();
         this.fadeIn();
     }
 
@@ -33,21 +25,50 @@ export default class GameScene extends Phaser.Scene {
         this.cameras.main.fadeFrom(1000, 0, 0, 0);
     }
 
-    private createButtons() {
-        this.pauseButton = this.add.image(360, 1200, 'pause');
-        this.exitButton = this.add.image(180, 1200, 'exit');
-        this.restartButton = this.add.image(540, 1200, 'restart');
+    private addTitle() {
+        const title = this.add.text(Settings.gameWidth * 0.5, 80, Settings.gameScene, { fontFamily: 'Arial', fontSize: 40, color: '#FFFFFF', align: 'left' });
+        title.setOrigin(0.5, 0.5);
     }
 
-    private addButtonListeners() {
-        this.pauseButton.setInteractive()
-        this.exitButton.setInteractive();
-        this.restartButton.setInteractive();
-        this.pauseButton.on('pointerup', this.onPauseButtonClicked, this);
-        this.exitButton.on('pointerup', this.onExitButtonClicked, this);
-        this.restartButton.on('pointerup', this.onRestartButtonClicked, this);
-    }
+    private addButtons() {
+        const pauseButton = this.add.image(360, Settings.gameHeight, 'pause');
+        const exitButton = this.add.image(180, Settings.gameHeight, 'exit');
+        const restartButton = this.add.image(540, Settings.gameHeight, 'restart');
 
+        this.tweens.add({
+            targets: pauseButton,
+            x: 360,
+            y: 1200,
+            duration: 200,
+            ease: 'Quad.easeIn',
+            onComplete: () => {
+                pauseButton.setInteractive();
+                pauseButton.on('pointerup', this.onPauseButtonClicked, this);
+            }
+        });
+        this.tweens.add({
+            targets: exitButton,
+            x: 180,
+            y: 1200,
+            duration: 200,
+            ease: 'Quad.easeIn',
+            onComplete: () => {
+                exitButton.setInteractive();
+                exitButton.on('pointerup', this.onExitButtonClicked, this);
+            }
+        });
+        this.tweens.add({
+            targets: restartButton,
+            x: 540,
+            y: 1200,
+            duration: 200,
+            ease: 'Quad.easeIn',
+            onComplete: () => {
+                restartButton.setInteractive();
+                restartButton.on('pointerup', this.onRestartButtonClicked, this);
+            }
+        });
+    }
 
     private onPauseButtonClicked(pointer: Phaser.Input.Pointer) {
         this.scene.pause(Settings.gameScene);
