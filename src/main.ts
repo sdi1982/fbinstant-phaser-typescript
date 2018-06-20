@@ -14,7 +14,7 @@ class Load extends Phaser.Scene {
         super({ key: Settings.loadScene });
     }
 
-    public preload() {
+    public async preload() {
         if (!this._loaded) {
             this.load.on('progress', (value: number) => {
                 const percent = Math.abs(100 * value);
@@ -22,10 +22,8 @@ class Load extends Phaser.Scene {
             });
             this.load.on('complete', async () => {
                 this._loaded = true;
+                console.log('loaded')
                 FacebookInstant.SetLoadingProgress(100);
-                await FacebookInstant.StartGameAsync();
-                this.scene.start(Settings.menuScene);
-
             });
             this.load.svg('exit', 'assets/images/exit.svg');
             this.load.svg('happy', 'assets/images/happy.svg');
@@ -35,6 +33,15 @@ class Load extends Phaser.Scene {
         } else {
             this.scene.start(Settings.menuScene);
         }
+    }
+
+    public create() {
+        console.log('create')
+        FacebookInstant.StartGameAsync()
+            .then(() => {
+                console.log('start')
+                this.scene.start(Settings.menuScene);
+            });
     }
 }
 
@@ -48,10 +55,7 @@ class Main extends Phaser.Game {
             title: Settings.gameTitle,
             scene: [Load, MenuScene, GameScene]
         });
-        window.addEventListener('resize', (event) => {
-            this.resize(window.innerWidth, window.innerHeight);
-        }, false);
-        this.resize(window.innerWidth, window.innerHeight);
+
     }
 
     public resize(width: number, height: number) {
@@ -72,4 +76,9 @@ var main: Main = null;
 window.onload = async () => {
     await FacebookInstant.InitializeAsync();
     main = new Main();
+    main.resize(window.innerWidth, window.innerHeight);
+
+    window.addEventListener('resize', (event) => {
+        main.resize(window.innerWidth, window.innerHeight);
+    }, false);
 }
