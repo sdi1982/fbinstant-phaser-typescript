@@ -58,7 +58,7 @@ The contents of dist folder can be compressed and uploaded to Facebook Instant G
 * Add 'Instant Games' Product
 
 ### 2) Upload to Facebook
-* Build Game for Production
+* Build Game for Production or continue by using bundle.zip
 * Compress contents of dist folder into .zip or .7z format
 * Browse .zip or .7z file to Instant Games->Web Hosting section
 * Enter a description in the about this version... section
@@ -84,6 +84,13 @@ The contents of dist folder can be compressed and uploaded to Facebook Instant G
 
 ### Other
 * [Facebook Developers Instant Games SDK](https://developers.facebook.com/docs/games/instant-games/sdk) - FBInstant made available by index.html (not part of bundle)
+
+## What Works
+* Development environment without Facebook being available ✓
+* Building a production build and packaging it to play through Facebook ✓
+* Fetching player name and photo ✓
+* Loading progress of game tied into Facebook ✓
+* Phaser scene management including menu, game and pause scenes ✓
 
 ## Feature Requests
 * Typings for Facebook Instant Games SDK to remove some of the guesswork when using it
