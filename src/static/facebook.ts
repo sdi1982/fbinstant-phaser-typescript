@@ -23,7 +23,7 @@ export default class FacebookInstant {
         return this._hasLoaded;
     }
     public static get available(): boolean {
-        return window.location.host == "www.facebook.com";
+        return window.location.hostname == "www.facebook.com";
     }
     /*
      * Initializes the SDK library. This should be called before any other SDK functions.
@@ -40,6 +40,8 @@ export default class FacebookInstant {
                         this._hasInitialized = false;
                         resolve(false);
                     });
+            } else if (this._hasInitialized) {
+                resolve(true);
             } else {
                 resolve(false);
             }

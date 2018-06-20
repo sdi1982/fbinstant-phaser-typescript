@@ -5,9 +5,13 @@ export default class MenuScene extends Phaser.Scene {
 
     constructor() {
         super({ key: Settings.menuScene });
+        console.log("MenuScene.constructor()");
     }
-
+    public init() {
+        console.log("MenuScene.init()");
+    }
     public create() {
+        console.log("MenuScene.create()");
         this.addButtons();
         this.addFacebookDiagnostics();
         this.addFacebookData();

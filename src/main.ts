@@ -14,13 +14,13 @@ class Load extends Phaser.Scene {
         super({ key: Settings.loadScene });
     }
 
-    public async preload() {
+    public preload() {
         if (!this._loaded) {
             this.load.on('progress', (value: number) => {
                 const percent = Math.abs(100 * value);
                 FacebookInstant.SetLoadingProgress(percent);
             });
-            this.load.on('complete', async () => {
+            this.load.on('complete', () => {
                 this._loaded = true;
                 console.log('loaded')
                 FacebookInstant.SetLoadingProgress(100);
@@ -72,13 +72,14 @@ class Main extends Phaser.Game {
     }
 }
 var main: Main = null;
+window.onload = () => {
+    FacebookInstant.InitializeAsync()
+        .then(() => {
+            main = new Main();
+            main.resize(window.innerWidth, window.innerHeight);
 
-window.onload = async () => {
-    await FacebookInstant.InitializeAsync();
-    main = new Main();
-    main.resize(window.innerWidth, window.innerHeight);
-
-    window.addEventListener('resize', (event) => {
-        main.resize(window.innerWidth, window.innerHeight);
-    }, false);
+            window.addEventListener('resize', (event) => {
+                main.resize(window.innerWidth, window.innerHeight);
+            }, false);
+        });
 }
