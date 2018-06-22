@@ -35,5 +35,5 @@
     "dev": "webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
   },
-  "version": "0.0.1"
+  "version": "0.0.4"
 }
