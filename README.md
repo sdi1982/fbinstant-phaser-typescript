@@ -2,6 +2,16 @@
 
 ### The dist folder includes the latest build in bundle.zip that includes Facebook diagnostics and which can be uploaded straight to Facebook and tested
 
+#### Current Build Screenshots from Facebook
+##### 1) Loading Screen
+![alt text](https://www.dropbox.com/s/wskkdpzb2zn9sxo/1.Loading.jpg?raw=1)
+##### 2) Menu Screen
+![alt text](https://www.dropbox.com/s/plxqwz5fxjtcv6u/2.MenuScene.jpg?raw=1)
+##### 3) Game Screen
+![alt text](https://www.dropbox.com/s/tocz6umseuwqm3b/3.GameScene.jpg?raw=1)
+##### 4) Pause Screen
+![alt text](https://www.dropbox.com/s/djmikaoe8ngfsw3/4.PauseScene.jpg?raw=1)
+
 ## Introduction
 A TypeScript webpack project that includes the phaser library in its output. Base build size is ~700KB. Facebook Instant Games SDK is available when loaded in the browser. As no typings are available for the SDK there is a bit of guesswork involved with integrating it in game.
 

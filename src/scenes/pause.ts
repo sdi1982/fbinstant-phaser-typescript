@@ -1,18 +1,17 @@
 import Settings from "../static/settings";
+import Logger from "../utilities/logger";
 
+const logger: Logger = new Logger('pause');
 export default class PauseScene extends Phaser.Scene {
 
     constructor() {
         super({ key: Settings.pauseScene });
-        console.log("PauseScene.constructor()");
     }
 
     public create() {
-        console.log("PauseScene.create()");
         this.addBackground();
         this.addTitle();
         this.addButtons();
-        this.fadeIn();
     }
 
     private addBackground() {
@@ -44,9 +43,5 @@ export default class PauseScene extends Phaser.Scene {
     private onResumeButtonClicked(pointer: Phaser.Input.Pointer) {
         this.scene.resume(Settings.gameScene);
         this.scene.setVisible(false);
-    }
-
-    private fadeIn() {
-        this.cameras.main.fadeFrom(1000, 0, 0, 0);
     }
 }

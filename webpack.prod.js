@@ -1,6 +1,7 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common');
 const webpack = require('webpack');
+
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 // Attempts to shrinken the production build wherever possible
 module.exports = merge(common, {
@@ -17,7 +18,7 @@ module.exports = merge(common, {
                 },
                 compress: {
                     warnings: true,
-                    drop_console: true // Set to true when happy with removing console output
+                    drop_console: false // Set to true when happy with removing console output
                 }
             }
         })

@@ -15,19 +15,15 @@ export default class Settings {
         return "Phaser & Facebook Instant Starter";
     }
     public static get gameScene(): string {
-        return 'GameScene';
-    }
-
-    public static get loadScene(): string {
-        return 'LoadScene';
+        return 'Game Scene';
     }
     public static get menuScene(): string {
-        return 'MenuScene';
+        return 'Main Menu';
     }
     public static get pauseScene(): string {
-        return 'PauseScene';
+        return 'Pause Menu';
     }
     public static get backgroundColour(): string {
-        return "#0f0f0f";
+        return "#0000FF";
     }
 }

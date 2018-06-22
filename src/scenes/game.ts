@@ -1,21 +1,20 @@
 import Settings from "../static/settings";
+import Logger from "../utilities/logger";
 
+const logger: Logger = new Logger('game');
 export default class GameScene extends Phaser.Scene {
     constructor() {
         super({ key: Settings.gameScene });
-
-        console.log("GameScene.constructor()");
     }
 
     // 1st function called by the Phaser game engine
-    public init() {
-        console.log("GameScene.init()");
+    public init(data:any) {
+        console.log("GameScene.init()",data);
     }
     
     // 3rd function called by the Phaser game engine, preload is 2nd
     public create() {
 
-        console.log("GameScene.create()");
         this.addButtons();
         this.addTitle();
         this.fadeIn();

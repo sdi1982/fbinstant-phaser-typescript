@@ -5,52 +5,11 @@ import MenuScene from "./scenes/menu";
 import GameScene from "./scenes/game";
 import PauseScene from "./scenes/pause";
 import Settings from "./static/settings";
-import FacebookInstant from "./static/facebook";
+import { FB } from "./static/facebook";
+import Logger from "./utilities/logger";
 
+const logger: Logger = new Logger('main');
 var game: Phaser.Game = null;
-
-function preload() {
-    console.log('Game.preload()');
-    this.load.on('progress', (value: number) => {
-        const percent = Math.abs(100 * value);
-        FacebookInstant.SetLoadingProgress(percent);
-    });
-    this.load.on('complete', () => {
-        console.log('Game loading complete')
-    });
-    this.load.on('filecomplete', (file: any) => {
-        console.log(`${file} file loaded`);
-    })
-    this.load.svg('exit', 'assets/images/exit.svg');
-    this.load.svg('pause', 'assets/images/pause.svg');
-    this.load.svg('play', 'assets/images/play.svg');
-    this.load.svg('restart', 'assets/images/restart.svg');
-    
-}
-
-function create() {
-    console.log('Game.create()');
-    FacebookInstant.StartGameAsync()
-        .then((value: boolean) => {
-            console.log('FBInstant StartGameAsync', value);
-            this.scene.start(Settings.menuScene);
-        });
-}
-function resize(width: number, height: number) {
-    console.log(`Game.resize(${width},${height})`);
-    var windowRatio = width / height;
-    var gameRatio = Settings.gameRatio;
-    if (windowRatio < gameRatio) {
-        game.canvas.style.width = width + "px";
-        game.canvas.style.height = (width / gameRatio) + "px";
-    }
-    else {
-        game.canvas.style.width = (height * gameRatio) + "px";
-        game.canvas.style.height = height + "px";
-    }
-}
-
-
 const config: GameConfig = {
     type: Phaser.AUTO,
     width: Settings.gameWidth,
@@ -63,12 +22,48 @@ const config: GameConfig = {
         resize: resize
     }
 };
+// 2) Load all assets and inform Facebook SDK of progress
+function preload() {
+    this.load.on('progress', (value: number) => {
+        const percent = Math.abs(100 * value);
+        FB.setLoadingProgress(percent);
+    });
+    this.load.on('complete', () => {
+        logger.Success('Game loading complete')
+    });
+    this.load.on('filecomplete', (file: any) => {
+        logger.Success(`${file} file loaded`);
+    });
+    this.load.svg('exit', 'assets/images/exit.svg');
+    this.load.svg('pause', 'assets/images/pause.svg');
+    this.load.svg('play', 'assets/images/play.svg');
+    this.load.svg('restart', 'assets/images/restart.svg');
+}
+
+// 3) Start menu scene after starting Facebook SDK
+function create() {
+    FB.startGameAsync()
+        .then((value: boolean) => {
+            this.scene.start(Settings.menuScene);
+        });
+}
+function resize(width: number, height: number) {
+    var windowRatio = width / height;
+    var gameRatio = Settings.gameRatio;
+    if (windowRatio < gameRatio) {
+        game.canvas.style.width = width + "px";
+        game.canvas.style.height = (width / gameRatio) + "px";
+    } else {
+        game.canvas.style.width = (height * gameRatio) + "px";
+        game.canvas.style.height = height + "px";
+    }
+}
 
 window.onload = () => {
-    FacebookInstant.InitializeAsync()
+
+    // 1) Initialize Facebook and Phaser Game
+    FB.initializeAsync()
         .then((value: boolean) => {
-            console.log('FBInstant Initialized:', value);
-            
             game = new Phaser.Game(config);
             game.scene.add(Settings.menuScene, MenuScene);
             game.scene.add(Settings.gameScene, GameScene);
