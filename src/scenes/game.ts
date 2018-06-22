@@ -25,7 +25,7 @@ export default class GameScene extends Phaser.Scene {
     }
 
     private addTitle() {
-        const title = this.add.text(Settings.gameWidth * 0.5, 80, Settings.gameScene, { fontFamily: 'Arial', fontSize: 40, color: '#FFFFFF', align: 'left' });
+        const title = this.add.text(Settings.gameWidth * 0.5, 80, Settings.gameScene, Settings.textTitleStyle);
         title.setOrigin(0.5, 0.5);
     }
 

@@ -4,6 +4,9 @@ import "phaser";
 import MenuScene from "./scenes/menu";
 import GameScene from "./scenes/game";
 import PauseScene from "./scenes/pause";
+
+import DiagnosticsScene from "./scenes/diagnostics";
+
 import Settings from "./static/settings";
 import { FB } from "./static/facebook";
 import Logger from "./utilities/logger";
@@ -65,9 +68,15 @@ window.onload = () => {
     FB.initializeAsync()
         .then((value: boolean) => {
             game = new Phaser.Game(config);
+
+            // Game Scenes
             game.scene.add(Settings.menuScene, MenuScene);
             game.scene.add(Settings.gameScene, GameScene);
             game.scene.add(Settings.pauseScene, PauseScene);
+
+            // Facebook Specific Scenes
+            game.scene.add(Settings.diagnosticsScene, DiagnosticsScene);
+
             game.events.on('resize', resize, game);
 
             game.events.emit('resize', window.innerWidth, window.innerHeight);

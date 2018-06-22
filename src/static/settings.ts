@@ -23,6 +23,18 @@ export default class Settings {
     public static get pauseScene(): string {
         return 'Pause Menu';
     }
+    public static get diagnosticsScene(): string {
+        return 'Facebook Diagnostics';
+    }
+    public static get textTitleStyle(): object {
+        return { fontFamily: 'Arial', fontSize: 40, color: '#000000', backgroundColor: '#FFFFFF', align: 'left' };
+    }
+    public static get textSubtitleStyle(): object {
+        return { fontFamily: 'Arial', fontSize: '30px', color: '#000000', backgroundColor: '#FFFFFF', align: 'left' };
+    }
+    public static get textParagraphStyle(): object {
+        return { fontFamily: 'Arial', fontSize: 20, color: '#000000', backgroundColor: '#FFFFFF', align: 'left' };
+    }
     public static get backgroundColour(): string {
         return "#0000FF";
     }
