@@ -121,7 +121,7 @@ export class FB {
                 this._logger.Success('initializeAsync - already initialized');
 
                 resolve(true);
-            } else if (this._hasInitialized) {
+            } else {
                 this._logger.Error('initializeAsync - not available');
                 resolve(false);
             }
