@@ -36,7 +36,8 @@ export class FB {
     }
 
     /**
-     * Use this to determine what languages the current game should be localized with. The value will not be accurate until FBInstant.startGameAsync() resolves.
+     * Use this to determine what languages the current game should be localized with. 
+     * The value will not be accurate until FBInstant.startGameAsync() resolves.
      * @returns The current locale.
      */
     public static get locale(): string {
@@ -47,7 +48,8 @@ export class FB {
     }
 
     /**
-     * The platform on which the game is currently running. The value will always be null until FBInstant.initializeAsync() resolves.
+     * The platform on which the game is currently running. 
+     * The value will always be null until FBInstant.initializeAsync() resolves.
      * @returns Platform.
      */
     public static get platform(): Platform {
@@ -71,7 +73,8 @@ export class FB {
 
     /**
      * Returns any data object associated with the entry point that the game was launched from.
-     * The contents of the object are developer-defined, and can occur from entry points on different platforms. This will return null for older mobile clients, as well as when there is no data associated with the particular entry point.
+     * The contents of the object are developer-defined, and can occur from entry points on different platforms. 
+     * This will return null for older mobile clients, as well as when there is no data associated with the particular entry point.
      * @returns Data associated with the current entry point.
      */
     public static get entryPointData(): object {
@@ -83,7 +86,8 @@ export class FB {
 
     /**
      * Sets the data associated with the individual gameplay session for the current context.
-     * This function should be called whenever the game would like to update the current session data. This session data may be used to populate a variety of payloads, such as game play webhooks.
+     * This function should be called whenever the game would like to update the current session data. 
+     * This session data may be used to populate a variety of payloads, such as game play webhooks.
      * @param data An arbitrary data object, which must be less than or equal to 1000 characters when stringified.
      */
     public static set sessionData(data: object) {
@@ -139,7 +143,8 @@ export class FB {
     }
 
     /**
-    * This indicates that the game has finished initial loading and is ready to start. Context information will be up-to-date when the returned promise resolves.
+    * This indicates that the game has finished initial loading and is ready to start. 
+    * Context information will be up-to-date when the returned promise resolves.
     * @returns returns a promise with a resolved boolean result.
     */
     public static startGameAsync(): Promise<boolean> {
@@ -163,7 +168,7 @@ export class FB {
             }
         });
     }
-
+    
     /**
      * Returns the entry point that the game was launched from.
      * @returns The name of the entry point from which the user started the game.
@@ -193,7 +198,10 @@ export class FB {
     }
 
     /**
-     * This invokes a dialog to let the user share specified content, either as a message in Messenger or as a post on the user's timeline. A blob of data can be attached to the share which every game session launched from the share will be able to access from FBInstant.getEntryPointData(). This data must be less than or equal to 1000 characters when stringified. The user may choose to cancel the share action and close the dialog, and the returned promise will resolve when the dialog is closed regardless if the user actually shared the content or not.
+     * This invokes a dialog to let the user share specified content, either as a message in Messenger or as a post on the user's timeline. 
+     * A blob of data can be attached to the share which every game session launched from the share will be able to access from FBInstant.getEntryPointData(). 
+     * This data must be less than or equal to 1000 characters when stringified. 
+     * The user may choose to cancel the share action and close the dialog, and the returned promise will resolve when the dialog is closed regardless if the user actually shared the content or not.
      * @param payload Specify what to share.
      * @returns A promise that resolves when the share is completed or cancelled.
      */
@@ -219,7 +227,9 @@ export class FB {
     }
 
     /**
-     * Informs Facebook of an update that occurred in the game. This will temporarily yield control to Facebook and Facebook will decide what to do based on what the update is. The returned promise will resolve/reject when Facebook returns control to the game.
+     * Informs Facebook of an update that occurred in the game. 
+     * This will temporarily yield control to Facebook and Facebook will decide what to do based on what the update is. 
+     * The returned promise will resolve/reject when Facebook returns control to the game.
      * @param payload A payload that describes the update.
      * @returns A promise that resolves when Facebook gives control back to the game.
      */
@@ -243,9 +253,12 @@ export class FB {
     }
 
     /**
-     * Request that the client switch to a different Instant Game. The API will reject if the switch fails - else, the client will load the new game.
-     * @param appID The Application ID of the Instant Game to switch to. The application must be an Instant Game, and must belong to the same business as the current game.
-     * @param data An optional data payload. This will be set as the entrypoint data for the game being switched to. Must be less than or equal to 1000 characters when stringified.
+     * Request that the client switch to a different Instant Game. 
+     * The API will reject if the switch fails - else, the client will load the new game.
+     * @param appID The Application ID of the Instant Game to switch to. 
+     * The application must be an Instant Game, and must belong to the same business as the current game.
+     * @param data An optional data payload. This will be set as the entrypoint data for the game being switched to. 
+     * Must be less than or equal to 1000 characters when stringified.
      * @return a promise that resolves with a boolean result.
      */
     public static switchGameAsync(appID: string, data?: object): Promise<boolean> {
@@ -269,9 +282,15 @@ export class FB {
 
 
     /**
-     * Attempts to match the current player with other users looking for people to play with. If successful, a new Messenger group thread will be created containing the matched players and the player will be context switched to that thread. The default minimum and maximum number of players in one matched thread are 2 and 20 respectively, depending on how many players are trying to get matched around the same time. The values can be changed in fbapp-config.json. See the [Bundle Config documentation]
-     * @param matchTag Optional extra information about the player used to group them with similar players. Players will only be grouped with other players with exactly the same tag. The tag must only include letters, numbers, and underscores and be 100 characters or less in length.
-     * @param switchContextWhenMatched Optional extra parameter that specifies whether the player should be immediately switched to the new context when a match is found. By default this will be false which will mean the player needs explicitly press play after being matched to switch to the new context.
+     * Attempts to match the current player with other users looking for people to play with. 
+     * If successful, a new Messenger group thread will be created containing the matched players and the player will be context switched to that thread. 
+     * The default minimum and maximum number of players in one matched thread are 2 and 20 respectively, depending on how many players are trying to get matched around the same time. 
+     * The values can be changed in fbapp-config.json. See the [Bundle Config documentation]
+     * @param matchTag Optional extra information about the player used to group them with similar players. 
+     * Players will only be grouped with other players with exactly the same tag. 
+     * The tag must only include letters, numbers, and underscores and be 100 characters or less in length.
+     * @param switchContextWhenMatched Optional extra parameter that specifies whether the player should be immediately switched to the new context when a match is found. 
+     * By default this will be false which will mean the player needs explicitly press play after being matched to switch to the new context.
      * @returns A promise that resolves when the player has been added to a group thread and switched into the thread's context.
      */
     public static matchPlayerAsync(matchTag?: string, switchContextWhenMatched?: boolean): Promise<boolean> {
@@ -343,7 +362,6 @@ export class FB {
             this._logger.Success('onPause');
         } else {
             this._logger.Error('onPause - not available');
-
         }
     }
 }
@@ -355,7 +373,8 @@ export class FBAds {
     private static _logger: Logger = new Logger('FBAds');
 
     /**
-     * Attempt to create an instance of interstitial ad. This instance can then be preloaded and presented.
+     * Attempt to create an instance of interstitial ad. 
+     * This instance can then be preloaded and presented.
      * @param placementID The placement ID that's been setup in your Audience Network settings.
      * @return A promise that resolves with a AdInstance, or rejects with a APIError if it couldn't be created.
      */
@@ -379,7 +398,8 @@ export class FBAds {
     }
 
     /**
-     * Attempt to create an instance of rewarded video. This instance can then be preloaded and presented.
+     * Attempt to create an instance of rewarded video. 
+     * This instance can then be preloaded and presented.
      * @param placementID The placement ID that's been setup in your Audience Network settings.
      * @return A promise that resolves with a AdInstance, or rejects with a APIError if it couldn't be created.
      */
@@ -412,7 +432,9 @@ export class FBAnalytics {
      * Log an app event with FB Analytics.
      * @param eventName Name of the event. Must be 2 to 40 characters, and can only contain '_', '-', ' ', and alphanumeric characters.
      * @param valueToSum An optional numeric value that FB Analytics can calculate a sum with.
-     * @param parameters An optional object that can contain up to 25 key-value pairs to be logged with the event. Keys must be 2 to 40 characters, and can only contain '_', '-', ' ', and alphanumeric characters. Values must be less than 100 characters in length.
+     * @param parameters An optional object that can contain up to 25 key-value pairs to be logged with the event. 
+     * Keys must be 2 to 40 characters, and can only contain '_', '-', ' ', and alphanumeric characters. 
+     * Values must be less than 100 characters in length.
      * @returns The error if the event failed to log; otherwise returns null.
      */
     public static logEvent(eventName: string, valueToSum: number, parameters: object): Promise<APIError> {
@@ -446,7 +468,10 @@ export class FBContext {
     }
 
     /**
-     * A unique identifier for the current game context. This represents a specific context that the game is being played in (for example, a particular messenger conversation or facebook post). The identifier will be null if game is being played in a solo context. This function should not be called until FBInstant.startGameAsync has resolved.
+     * A unique identifier for the current game context. 
+     * This represents a specific context that the game is being played in (for example, a particular messenger conversation or facebook post). 
+     * The identifier will be null if game is being played in a solo context. 
+     * This function should not be called until FBInstant.startGameAsync has resolved.
      * @returns string? A unique identifier for the current game context.
      */
     public static get id(): string {
@@ -457,7 +482,11 @@ export class FBContext {
     }
 
     /**
-     * The type of the current game context. POST - A facebook post. THREAD - A messenger thread. GROUP - A facebook group. SOLO - Default context, where the player is the only participant.
+     * The type of the current game context. 
+     * POST - A facebook post. 
+     * THREAD - A messenger thread. 
+     * GROUP - A facebook group. 
+     * SOLO - Default context, where the player is the only participant.
      * @returns string? ("POST" | "THREAD" | "GROUP" | "SOLO") Type of the current game context.
      */
     public static get type(): string {
@@ -468,7 +497,11 @@ export class FBContext {
     }
 
     /**
-     * This function determines whether the number of participants in the current game context is between a given minimum and maximum, inclusive. If one of the bounds is null only the other bound will be checked against. It will always return the original result for the first call made in a context in a given game play session. Subsequent calls, regardless of arguments, will return the answer to the original query until a context change occurs and the query result is reset. This function should not be called until FBInstant.startGameAsync has resolved.
+     * This function determines whether the number of participants in the current game context is between a given minimum and maximum, inclusive. 
+     * If one of the bounds is null only the other bound will be checked against. 
+     * It will always return the original result for the first call made in a context in a given game play session. 
+     * Subsequent calls, regardless of arguments, will return the answer to the original query until a context change occurs and the query result is reset. 
+     * This function should not be called until FBInstant.startGameAsync has resolved.
      * @param minSize The minimum bound of the context size query.
      * @param maxSize The maximum bound of the context size query.
      * @returns ContextSizeResponse?
@@ -481,7 +514,9 @@ export class FBContext {
     }
 
     /**
-     * Request a switch into a specific context. If the player does not have permission to enter that context, or if the player does not provide permission for the game to enter that context, this will reject. Otherwise, the promise will resolve when the game has switched into the specified context.
+     * Request a switch into a specific context. 
+     * If the player does not have permission to enter that context, or if the player does not provide permission for the game to enter that context, this will reject. 
+     * Otherwise, the promise will resolve when the game has switched into the specified context.
      * @param id ID of the desired context.
      * @returns A promise that resolves when the game has switched into the specified context, or rejects otherwise.
      */
@@ -505,12 +540,15 @@ export class FBContext {
     }
 
     /**
-     * Opens a context selection dialog for the player. If the player selects an available context, the client will attempt to switch into that context, and resolve if successful. Otherwise, if the player exits the menu or the client fails to switch into the new context, this function will reject.
+     * Opens a context selection dialog for the player. 
+     * If the player selects an available context, the client will attempt to switch into that context, and resolve if successful. 
+     * Otherwise, if the player exits the menu or the client fails to switch into the new context, this function will reject.
      * @param options An object specifying conditions on the contexts that should be offered.
      * @param filters The set of filters to apply to the context suggestions.
      * @param maxSize The maximum number of participants that a suggested context should ideally have.
      * @param minSize The minimum number of participants that a suggested context should ideally have.
-     * @returns A promise that resolves when the game has switched into the context chosen by the user. Otherwise, the promise will reject (if the user cancels out of the dialog, for example).
+     * @returns A promise that resolves when the game has switched into the context chosen by the user. 
+     * Otherwise, the promise will reject (if the user cancels out of the dialog, for example).
      */
     public static chooseAsync(options?: object, filters?: Array<ContextFilter>, maxSize?: number, minSize?: number): Promise<boolean> {
         return new Promise<boolean>((resolve) => {
@@ -532,7 +570,9 @@ export class FBContext {
     }
 
     /**
-     * Attempts to create or switch into a context between a specified player and the current player. The returned promise will reject if the player listed is not a Connected Player of the current player or if the player does not provide permission to enter the new context. Otherwise, the promise will resolve when the game has switched into the new context.
+     * Attempts to create or switch into a context between a specified player and the current player. 
+     * The returned promise will reject if the player listed is not a Connected Player of the current player or if the player does not provide permission to enter the new context. 
+     * Otherwise, the promise will resolve when the game has switched into the new context.
      * @param playerID ID of the player
      * @returns A promise that resolves when the game has switched into the new context, or rejects otherwise.
      */
@@ -556,7 +596,8 @@ export class FBContext {
     }
 
     /**
-     * Gets an array of #ContextPlayer objects containing information about active players (people who played the game in the last 90 days) that are associated with the current context. This may include the current player.
+     * Gets an array of #ContextPlayer objects containing information about active players (people who played the game in the last 90 days) that are associated with the current context. 
+     * This may include the current player.
      * @returns Returns Promise<Array<ContextPlayer>> or null
      */
     public static getPlayersAsync(): Promise<Array<ContextPlayer>> {
@@ -654,9 +695,14 @@ export class FBPlayer {
     }
 
     /**
-    * Set data to be saved to the designated cloud storage of the current player. The game can store up to 1MB of data for each unique player.
-    * @param data An object containing a set of key-value pairs that should be persisted to cloud storage. The object must contain only serializable values - any non-serializable values will cause the entire modification to be rejected.
-    * @returns returns a promise with a resolved boolean result. NOTE: The promise resolving does not necessarily mean that the input has already been persisted. Rather, it means that the data was valid and has been scheduled to be saved. It also guarantees that all values that were set are now available in player.getDataAsync.
+    * Set data to be saved to the designated cloud storage of the current player. 
+    * The game can store up to 1MB of data for each unique player.
+    * @param data An object containing a set of key-value pairs that should be persisted to cloud storage. 
+    * The object must contain only serializable values - any non-serializable values will cause the entire modification to be rejected.
+    * @returns returns a promise with a resolved boolean result. 
+    * NOTE: The promise resolving does not necessarily mean that the input has already been persisted. 
+    * Rather, it means that the data was valid and has been scheduled to be saved. 
+    * It also guarantees that all values that were set are now available in player.getDataAsync.
     */
     public static setDataAsync(data: object): Promise<boolean> {
         return new Promise<boolean>((resolve) => {
@@ -679,7 +725,8 @@ export class FBPlayer {
 
     /**
     * Retrieve stats from the designated cloud storage of the current player.
-    * @param keys An optional array of unique keys to retrieve stats for. If the function is called without it, it will fetch all stats.
+    * @param keys An optional array of unique keys to retrieve stats for. 
+    * If the function is called without it, it will fetch all stats.
     * @returns returns a promise that resolves with an object which contains the current key-value pairs for each key specified in the input array, if they exist.
     */
     public static getStatsAsync(keys: string[]): Promise<object> {
@@ -708,8 +755,12 @@ export class FBPlayer {
 
     /**
     * Set stats to be saved to the designated cloud storage of the current player.
-    * @param stats An object containing a set of key-value pairs that should be persisted to cloud storage as stats, which can be surfaced or used in a variety of ways to benefit player engagement. The object must contain only numerical values - any non-numerical values will cause the entire modification to be rejected.
-    * @returns returns a promise that resolves when the input values are set. NOTE: The promise resolving does not necessarily mean that the input has already been persisted. Rather, it means that the data was validated and has been scheduled to be saved. It also guarantees that all values that were set are now available in player.getStatsAsync.
+    * @param stats An object containing a set of key-value pairs that should be persisted to cloud storage as stats, which can be surfaced or used in a variety of ways to benefit player engagement. 
+    * The object must contain only numerical values - any non-numerical values will cause the entire modification to be rejected.
+    * @returns returns a promise that resolves when the input values are set. 
+    * NOTE: The promise resolving does not necessarily mean that the input has already been persisted. 
+    * Rather, it means that the data was validated and has been scheduled to be saved. 
+    * It also guarantees that all values that were set are now available in player.getStatsAsync.
     */
     public static setStatsAsync(stats: object): Promise<boolean> {
         return new Promise<boolean>((resolve) => {
@@ -732,8 +783,12 @@ export class FBPlayer {
 
     /**
     * Increment stats saved in the designated cloud storage of the current player.
-    * @param increments An object containing a set of key-value pairs indicating how much to increment each stat in cloud storage. The object must contain only numerical values - any non-numerical values will cause the entire modification to be rejected.
-    * @returns returns a promise that resolves with an object which contains the updated key-value pairs for each key specified in the input dictionary. NOTE: The promise resolving does not necessarily mean that the changes have already been persisted. Rather, it means that the increments were valid and have been scheduled to be performed. It also guarantees that all values that were incremented are now available in player.getStatsAsync.
+    * @param increments An object containing a set of key-value pairs indicating how much to increment each stat in cloud storage. 
+    * The object must contain only numerical values - any non-numerical values will cause the entire modification to be rejected.
+    * @returns returns a promise that resolves with an object which contains the updated key-value pairs for each key specified in the input dictionary. 
+    * NOTE: The promise resolving does not necessarily mean that the changes have already been persisted. 
+    * Rather, it means that the increments were valid and have been scheduled to be performed. 
+    * It also guarantees that all values that were incremented are now available in player.getStatsAsync.
     */
     public static incrementStatsAsync(increments: object): Promise<object> {
         return new Promise<object>((resolve) => {
@@ -761,7 +816,8 @@ export class FBPlayer {
 
     /**
      * Fetches an array of ConnectedPlayer objects containing information about active players (people who played the game in the last 90 days) that are connected to the current player.
-     * @returns A promise that resolves with a list of connected player objects. NOTE: This function should not be called until FBInstant.startGameAsync() has resolved.
+     * @returns A promise that resolves with a list of connected player objects. 
+     * NOTE: This function should not be called until FBInstant.startGameAsync() has resolved.
      */
     public static getConnectedPlayersAsync(): Promise<Array<ConnectedPlayer>> {
         return new Promise<Array<ConnectedPlayer>>((resolve) => {
@@ -797,12 +853,14 @@ export interface AdInstance {
     getPlacementID(): string;
 
     /**
-     * Preload the ad. The returned promise resolves when the preload completes, and rejects if it failed.
+     * Preload the ad. 
+     * The returned promise resolves when the preload completes, and rejects if it failed.
      */
     loadAsync(): Promise<boolean>;
 
     /**
-     * Present the ad. The returned promise resolves when user finished watching the ad, and rejects if it failed to present or was closed during the ad.
+     * Present the ad. 
+     * The returned promise resolves when user finished watching the ad, and rejects if it failed to present or was closed during the ad.
      */
     showAsync(): Promise<boolean>;
 }
@@ -825,7 +883,9 @@ export interface Leaderboard {
     getEntryCountAsync(): Promise<number>;
 
     /**
-     * Updates the player's score. If the player has an existing score, the old score will only be replaced if the new score is better than it. NOTE: If the leaderboard is associated with a specific context, the game must be in that context to set a score for the player.
+     * Updates the player's score. 
+     * If the player has an existing score, the old score will only be replaced if the new score is better than it. 
+     * NOTE: If the leaderboard is associated with a specific context, the game must be in that context to set a score for the player.
      * @param score The new score for the player. Must be a 64-bit integer number.
      * @param extraData Metadata to associate with the stored score. Must be less than 2KB in size.
      */
@@ -914,7 +974,10 @@ export interface ConnectedPlayer {
  */
 export type ContextSizeResponse = { answer: boolean, minSize: number, maxSize: number };
 /**
- * A filter that may be applied to a Context Choose operation 'NEW_CONTEXT_ONLY' - Prefer to only surface contexts the game has not been played in before. 'INCLUDE_EXISTING_CHALLENGES' - Include the "Existing Challenges" section, which surfaces actively played-in contexts that the player is a part of. 'NEW_PLAYERS_ONLY' - In sections containing individuals, prefer people who have not played the game.
+ * A filter that may be applied to a Context Choose operation. 
+ * 'NEW_CONTEXT_ONLY' - Prefer to only surface contexts the game has not been played in before. 
+ * 'INCLUDE_EXISTING_CHALLENGES' - Include the "Existing Challenges" section, which surfaces actively played-in contexts that the player is a part of. 
+ * 'NEW_PLAYERS_ONLY' - In sections containing individuals, prefer people who have not played the game.
  */
 export type ContextFilter = ("NEW_CONTEXT_ONLY" | "INCLUDE_EXISTING_CHALLENGES" | "NEW_PLAYERS_ONLY");
 /**
@@ -959,12 +1022,14 @@ export type SharePayload = {
      */
     text: string;
     /**
-     * A blob of data to attach to the share. All game sessions launched from the share will be able to access this blob through FBInstant.getEntryPointData().
+     * A blob of data to attach to the share. 
+     * All game sessions launched from the share will be able to access this blob through FBInstant.getEntryPointData().
      */
     data?: object;
 }
 /**
- * Represents a custom update for FBInstant.updateAsync. Note that if localized content is not provided, a Facebook supplied localized string will be used for the call to action and text.
+ * Represents a custom update for FBInstant.updateAsync. 
+ * Note that if localized content is not provided, a Facebook supplied localized string will be used for the call to action and text.
  */
 export type CustomUpdatePayload = {
     /**
@@ -972,11 +1037,14 @@ export type CustomUpdatePayload = {
      */
     action: UpdateAction;
     /**
-     * ID of the template this custom update is using. Templates should be predefined in fbapp-config.json. See the [Bundle Config documentation]
+     * ID of the template this custom update is using. 
+     * Templates should be predefined in fbapp-config.json. See the [Bundle Config documentation]
      */
     template: string;
     /**
-     * Optional call-to-action button text. By default we will use a localized 'Play' as the button text. To provide localized versions of your own call to action, pass an object with the default cta as the value of 'default' and another object mapping locale keys to translations as the value of 'localizations'.
+     * Optional call-to-action button text. 
+     * By default we will use a localized 'Play' as the button text. 
+     * To provide localized versions of your own call to action, pass an object with the default cta as the value of 'default' and another object mapping locale keys to translations as the value of 'localizations'.
      */
     cta?: string | LocalizableContent;
     /**
@@ -988,15 +1056,26 @@ export type CustomUpdatePayload = {
      */
     text: string | LocalizableContent;
     /**
-     * A blob of data to attach to the update. All game sessions launched from the update will be able to access this blob through FBInstant.getEntryPointData(). Must be less than or equal to 1000 characters when stringified.
+     * A blob of data to attach to the update. 
+     * All game sessions launched from the update will be able to access this blob through FBInstant.getEntryPointData(). 
+     * Must be less than or equal to 1000 characters when stringified.
      */
     data: object;
     /**
-     * Specifies how the update should be delivered. This can be one of the following: 'IMMEDIATE' - The update should be posted immediately. 'LAST' - The update should be posted when the game session ends. The most recent update sent using the 'LAST' strategy will be the one sent. 'IMMEDIATE_CLEAR' - The update is posted immediately, and clears any other pending updates (such as those sent with the 'LAST' strategy). If no strategy is specified, we default to 'IMMEDIATE'.
+     * Specifies how the update should be delivered. 
+     * This can be one of the following: 
+     * 'IMMEDIATE' - The update should be posted immediately. 
+     * 'LAST' - The update should be posted when the game session ends. 
+     * The most recent update sent using the 'LAST' strategy will be the one sent. 
+     * 'IMMEDIATE_CLEAR' - The update is posted immediately, and clears any other pending updates (such as those sent with the 'LAST' strategy). 
+     * If no strategy is specified, we default to 'IMMEDIATE'.
      */
     strategy?: string;
     /**
-     * Specifies notification setting for the custom update. This can be 'NO_PUSH' or 'PUSH', and defaults to 'NO_PUSH'. Use push notification only for updates that are high-signal and immediately actionable for the recipients. Also note that push notification is not always guaranteed, depending on user setting and platform policies.
+     * Specifies notification setting for the custom update. 
+     * This can be 'NO_PUSH' or 'PUSH', and defaults to 'NO_PUSH'. 
+     * Use push notification only for updates that are high-signal and immediately actionable for the recipients. 
+     * Also note that push notification is not always guaranteed, depending on user setting and platform policies.
      */
     notification?: string;
 }
@@ -1021,7 +1100,9 @@ export type LocalizableContent = {
     localizations: LocalizationsDict;
 }
 /**
- * Represents a mapping from locales to translations of a given string. Each property is an optional five-character Facebook locale code of the form xx_XX. See https://origincache.facebook.com/developers/resources/?id=FacebookLocales.xml for a complete list of supported locale codes.
+ * Represents a mapping from locales to translations of a given string. 
+ * Each property is an optional five-character Facebook locale code of the form xx_XX. 
+ * See https://origincache.facebook.com/developers/resources/?id=FacebookLocales.xml for a complete list of supported locale codes.
  */
 export type LocalizationsDict = {};
 /**
