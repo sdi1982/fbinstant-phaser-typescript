@@ -2,10 +2,7 @@
 
 ### The dist folder includes the latest build in bundle.zip that includes Facebook diagnostics and which can be uploaded straight to Facebook and tested. There are plenty of colourful console outputs which are temporarily enabled in production build mode which you can see when playing through Facebook.
 #### Current Build Screenshots from Facebook
-
-##### Screenshots
 ![alt text](https://www.dropbox.com/s/15et4ox9l9rkkuw/Screenshots.jpg?raw=1)
-
 ## Introduction
 A TypeScript webpack project that includes the phaser library in its output. Base build size is ~700KB. Facebook Instant Games SDK is available when loaded in the browser. The SDK is followed closely when implementing it in TypeScript.
 
