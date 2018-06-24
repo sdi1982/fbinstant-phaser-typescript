@@ -168,7 +168,7 @@ export class FB {
             }
         });
     }
-    
+
     /**
      * Returns the entry point that the game was launched from.
      * @returns The name of the entry point from which the user started the game.
@@ -227,6 +227,79 @@ export class FB {
     }
 
     /**
+     * Returns whether or not the user is eligible to have shortcut creation requested.
+     * Will return false if createShortcutAsync was already called this session or the user is ineligible for shortcut creation.
+     * @returns Promise that resolves with true if the game can request the player create a shortcut to the game, and false otherwise
+     */
+    public static canCreateShortcutAsync(): Promise<boolean> {
+        return new Promise<boolean>((resolve) => {
+            if (this._hasStarted) {
+                FBInstant.canCreateShortcutAsync()
+                    .then((can: boolean) => {
+
+                        this._logger.Success('canCreateShortcutAsync', can);
+
+                        resolve(can);
+                    })
+                    .catch((err: ErrorCode) => {
+                        this._logger.Error('canCreateShortcutAsync', err);
+
+                        resolve(false);
+                    });
+            } else {
+                this._logger.Error('canCreateShortcutAsync - not available');
+                resolve(false);
+            }
+        });
+    }
+
+    /**
+     * Prompts the user to create a shortcut to the game if they are eligible to Can only be called once per session. (see canCreateShortcutAsync)
+     * @returns Promise that resolves to true of false
+     */
+    public static createShortcutAsync(): Promise<boolean> {
+        return new Promise<boolean>((resolve) => {
+            if (this._hasStarted) {
+                FBInstant.createShortcutAsync()
+                    .then(() => {
+                        this._logger.Success('createShortcutAsync');
+                        resolve(true);
+                    })
+                    .catch((err: ErrorCode) => {
+                        this._logger.Error('createShortcutAsync', err);
+                        resolve(false);
+                    });
+            } else {
+                this._logger.Error('createShortcutAsync - not available');
+                resolve(false);
+            }
+        });
+    }
+
+    /**
+     * Checks if the current player is eligible for the matchPlayerAsync API.
+     * @returns A promise that resolves with true if the player is eligible to match with other players and false otherwise.
+     */
+    public static checkCanPlayerMatchAsync(): Promise<boolean> {
+        return new Promise<boolean>((resolve) => {
+            if (this._hasStarted) {
+                FBInstant.checkCanPlayerMatchAsync()
+                    .then((can: boolean) => {
+                        this._logger.Success('checkCanPlayerMatchAsync', can);
+                        resolve(can);
+                    })
+                    .catch((err: ErrorCode) => {
+                        this._logger.Error('checkCanPlayerMatchAsync', err);
+                        resolve(false);
+                    });
+            } else {
+                this._logger.Error('checkCanPlayerMatchAsync - not available');
+                resolve(false);
+            }
+        });
+    }
+
+    /**
      * Informs Facebook of an update that occurred in the game. 
      * This will temporarily yield control to Facebook and Facebook will decide what to do based on what the update is. 
      * The returned promise will resolve/reject when Facebook returns control to the game.
@@ -279,7 +352,6 @@ export class FB {
             }
         });
     }
-
 
     /**
      * Attempts to match the current player with other users looking for people to play with. 
@@ -842,6 +914,84 @@ export class FBPlayer {
             }
         });
     }
+
+    /**
+     * Fetch the player's unique identifier along with a signature that verifies that the identifier indeed comes from Facebook without being tampered with. 
+     * This function should not be called until FBInstant.initializeAsync() has resolved.
+     * @param requestPayload A developer-specified payload to include in the signed response.
+     * @returns A promise that resolves with a SignedPlayerInfo object.
+     */
+    public static getSignedPlayerInfoAsync(requestPayload: string): Promise<SignedPlayerInfo> {
+        return new Promise<SignedPlayerInfo>((resolve) => {
+            if (FB.initialized) {
+                this.player.getSignedPlayerInfoAsync(requestPayload)
+                    .then((result: SignedPlayerInfo) => {
+                        if (result != null) {
+                            this._logger.Success('getSignedPlayerInfoAsync', result);
+                            resolve(result);
+                        } else {
+                            this._logger.Error('getSignedPlayerInfoAsync - does not exist');
+                            resolve(null);
+                        }
+                    })
+                    .catch((err: any) => {
+                        this._logger.Error('getSignedPlayerInfoAsync', err);
+                        resolve(null);
+                    });
+            } else {
+                this._logger.Error('getSignedPlayerInfoAsync - not available');
+                resolve(null);
+            }
+        });
+    }
+
+    /**
+     * Returns a promise that resolves with whether the player can subscribe to the game bot or not.
+     * @returns Whether a player can subscribe to the game bot or not. 
+     * Developer can only call subscribeBotAsync() after checking canSubscribeBotAsync(), and the player will only be able to see this bot subscription dialog once for a specific game.
+     */
+    public static canSubscribeBotAsync(): Promise<boolean> {
+        return new Promise<boolean>((resolve) => {
+            if (FB.started) {
+                this.player.canSubscribeBotAsync()
+                    .then((can: boolean) => {
+                        this._logger.Success('canSubscribeBotAsync', can);
+                        resolve(can);
+                    })
+                    .catch((err: any) => {
+                        this._logger.Error('canSubscribeBotAsync', err);
+                        resolve(false);
+                    });
+            } else {
+                this._logger.Error('canSubscribeBotAsync - not available');
+                resolve(false);
+            }
+        });
+    }
+
+    /**
+     * Request that the player subscribe the bot associated to the game. 
+     * The API will reject if the subscription fails - else, the player will subscribe the game bot.
+     * @returns A promise that resolves if player successfully subscribed to the game bot, or rejects if request failed or player chose to not subscribe.
+     */
+    public static subscribeBotAsync(): Promise<boolean> {
+        return new Promise<boolean>((resolve) => {
+            if (FB.started) {
+                this.player.subscribeBotAsync()
+                    .then(() => {
+                        this._logger.Success('subscribeBotAsync');
+                        resolve(true);
+                    })
+                    .catch((err: any) => {
+                        this._logger.Error('subscribeBotAsync', err);
+                        resolve(false);
+                    });
+            } else {
+                this._logger.Error('subscribeBotAsync - not available');
+                resolve(false);
+            }
+        });
+    }
 }
 /**
  * Represents an instance of an ad.
@@ -984,6 +1134,33 @@ export type ContextFilter = ("NEW_CONTEXT_ONLY" | "INCLUDE_EXISTING_CHALLENGES" 
  * Represents the current platform that the user is playing on.
  */
 export type Platform = ("IOS" | "ANDROID" | "WEB" | "MOBILE_WEB");
+
+/**
+ * Represents information about the player along with a signature to verify that it indeed comes from Facebook.
+ */
+export interface SignedPlayerInfo {
+    /**
+     * Get the id of the player.
+     * @returns The ID of the player
+     */
+    getPlayerID(): string;
+
+    /**
+     * A signature to verify this object indeed comes from Facebook.
+     * The string is base64url encoded and signed with an HMAC version of your App Secret, based on the OAuth 2.0 spec.
+     * You can validate it with the following 4 steps:
+     ** Split the signature into two parts delimited by the '.' character.
+     ** Decode the first part (the encoded signature) with base64url encoding.
+     ** Decode the second part (the response payload) with base64url encoding, which should be a string representation of a JSON object that has the following fields: ** algorithm - always equals to HMAC-SHA256 ** issued_at - a unix timestamp of when this response was issued. ** player_id - unique identifier of the player. ** request_payload - the requestPayload string you specified when calling FBInstant.player.getSignedPlayerInfoAsync.
+     ** Hash the whole response payload string using HMAC SHA-256 and your app secret and confirm that it is equal to the encoded signature.
+     ** You may also wish to validate the issued_at timestamp in the response payload to ensure the request was made recently.
+     * Signature validation should only happen on your server. Never do it on the client side as it will compromise your app secret key.
+     * @returns The signature string.
+     */
+    getSignature(): string;
+}
+
+
 /**
  * Represents information about a player who is in the context that the current player is playing in.
  */
