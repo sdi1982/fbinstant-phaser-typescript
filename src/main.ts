@@ -47,7 +47,7 @@ function preload() {
 function create() {
     FB.startGameAsync()
         .then((value: boolean) => {
-            this.scene.start(Settings.menuScene);
+            this.scene.start(Settings.diagnosticsScene);
         });
 }
 function resize(width: number, height: number) {

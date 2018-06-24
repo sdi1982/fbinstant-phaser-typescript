@@ -527,7 +527,6 @@ export class FBAnalytics {
             }
         });
     }
-
 }
 /**
 * Contains properties and functions from the context object on the FBInstant namespace
