@@ -103,7 +103,7 @@ export class FB {
     */
     public static initializeAsync(): Promise<boolean> {
         return new Promise<boolean>((resolve) => {
-            if (!this._hasInitialized && window.location.host != "localhost:8080") {
+            if (!this._hasInitialized && window.location.port == "") {
                 FBInstant.initializeAsync()
                     .then(() => {
                         this._logger.Success('initializeAsync');
